@@ -1,0 +1,13 @@
+<resources>
+  <!-- Default screen margins, per the Android Design guidelines. -->
+  <dimen name="activity_horizontal_margin">16dp</dimen>
+  <dimen name="activity_vertical_margin">16dp</dimen>
+  <!--Размер заголовка в списке-->
+  <dimen name="text_h2">14dp</dimen>
+  <dimen name="text_h3">12dp</dimen>
+  <dimen name="text_h4">10dp</dimen>
+  <!--Внутренний отступ компонента-->
+  <dimen name="padding_list_item">10dp</dimen>
+  <!--Стороны изображения в форме списка-->
+  <dimen name="list_picture_item_size">100dp</dimen>
+</resources>
