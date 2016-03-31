@@ -3,7 +3,6 @@ package com.dimanych.guardiannews.rest;
 import com.dimanych.guardiannews.model.Entity;
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 import java.util.List;
@@ -29,8 +28,7 @@ public interface ApiService {
                              @Query(API_KEY) String apiKey,
                              @Query(SHOW_FIELDS) String showFields);
 
-  @GET("/{item}")
-  Call<Entity> getNewsEntity(@Path("item") String item,
-                             @Query(API_KEY) String apiKey,
+  @GET
+  Call<Entity> getNewsEntity(@Query(API_KEY) String apiKey,
                              @Query(SHOW_FIELDS) String showFields);
 }

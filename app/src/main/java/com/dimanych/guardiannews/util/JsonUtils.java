@@ -16,7 +16,10 @@ public class JsonUtils {
    * @return подстрока, найденная по тегу tag
    */
   public static String getValue(JsonObject object, String tag) {
-    return object.get(tag).toString().replaceAll("\"", "");
+    if (Objects.nonNull(object)) {
+      return object.get(tag).toString().replaceAll("\"", "");
+    }
+    return null;
   }
   /**
    * Вытянуть число по тэгу

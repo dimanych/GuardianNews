@@ -19,9 +19,7 @@ import com.dimanych.guardiannews.util.Objects;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.dimanych.guardiannews.util.Constants.DESERIALIZER;
 import static com.dimanych.guardiannews.util.Constants.LOADING_FAILED;
-import static com.dimanych.guardiannews.util.Constants.NEWS_LIST_DESERIALIZER;
 import static com.dimanych.guardiannews.util.Constants.RESULTS;
 import static com.dimanych.guardiannews.util.Constants.STATUS;
 import static com.dimanych.guardiannews.util.Constants.STATUS_FAIL;
@@ -77,7 +75,7 @@ public class NewsListActivity extends AppCompatActivity {
       registerReceiver();
       progressSpinner.runProgressSpinner();
       Intent serviceIntent = new Intent(this, LoadService.class);
-      serviceIntent.putExtra(DESERIALIZER, NEWS_LIST_DESERIALIZER);
+//      serviceIntent.putExtra(DESERIALIZER, NEWS_LIST_DESERIALIZER);
       startService(serviceIntent);
     } else {
       newsList = savedInstanceState.getParcelableArrayList(RESULTS);

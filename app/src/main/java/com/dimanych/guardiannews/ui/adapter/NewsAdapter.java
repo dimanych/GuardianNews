@@ -75,9 +75,11 @@ public class NewsAdapter<T extends Entity> extends BaseAdapter {
     SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy HH:mm");
     String webPublicationDateStr = String.valueOf(sdf.format(news.webPublicationDate.getTime()));
     webPublicationDate.setText(webPublicationDateStr);
-    Picasso.with(context)
-      .load(news.thumbnail)
-      .into(thumbnail);
+    if (Objects.nonNull(news.thumbnail)) {
+      Picasso.with(context)
+        .load(news.thumbnail)
+        .into(thumbnail);
+    }
   }
 
   public void update(List<T> results) {

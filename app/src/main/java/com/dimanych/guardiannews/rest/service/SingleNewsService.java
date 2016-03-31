@@ -4,35 +4,29 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import com.dimanych.guardiannews.rest.NewsListDeserializer;
+import com.dimanych.guardiannews.model.Entity;
+import com.dimanych.guardiannews.rest.NewsBodyDeserializer;
 import com.dimanych.guardiannews.rest.RetrofitSetup;
 
-import java.util.List;
-
-import static com.dimanych.guardiannews.util.Constants.API_HOST;
 import static com.dimanych.guardiannews.util.Constants.API_KEY_VALUE;
+import static com.dimanych.guardiannews.util.Constants.API_URL;
 import static com.dimanych.guardiannews.util.Constants.NOT_YET_IMPLEMENTED;
-import static com.dimanych.guardiannews.util.Constants.THUMBNAIL;
-import static com.dimanych.guardiannews.util.Constants.WORLD;
-
 
 /**
- * <p>
- * Сервис для фоновой загрузки данных по API
- * </p>
+ * <p></p>
  *
  * @author Dmitriy Grigoriev
  */
-public class LoadService extends Service {
-
+public class SingleNewsService extends Service {
   @Override
   public int onStartCommand(Intent intent, int flags, int startId) {
     RetrofitSetup retrofitSetup = new RetrofitSetup();
+    String apiUrl = intent.getStringExtra(API_URL);
 
     retrofitSetup
-      .createService(new NewsListDeserializer(), List.class, API_HOST)
-      .getList(WORLD, API_KEY_VALUE, THUMBNAIL)
-      .enqueue(new NewsListCallback(this));
+      .createService(new NewsBodyDeserializer(), Entity.class, apiUrl)
+      .getNewsEntity(API_KEY_VALUE, "body")
+      .enqueue(new NewsBodyCallback(this));
 
     return super.onStartCommand(intent, flags, startId);
   }
@@ -42,5 +36,4 @@ public class LoadService extends Service {
   public IBinder onBind(Intent intent) {
     throw new UnsupportedOperationException(NOT_YET_IMPLEMENTED);
   }
-
 }

@@ -8,8 +8,6 @@ import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.dimanych.guardiannews.util.Constants.API_HOST;
-
 /**
  * <p>
  *   Логика работы библиотеки Retrofit
@@ -27,19 +25,19 @@ public class RetrofitSetup {
    * @return
    */
   @NonNull
-  public ApiService createService(JsonDeserializer jsonDeserializer, Class classItem) {
+  public ApiService createService(JsonDeserializer jsonDeserializer, Class classItem, String url) {
     this.jsonDeserializer = jsonDeserializer;
     this.classItem = classItem;
-    return createRetrofit().create(ApiService.class);
+    return createRetrofit(url).create(ApiService.class);
   }
 
   /**
    * Инициализация Retrofit
    */
   @NonNull
-  private Retrofit createRetrofit() {
+  private Retrofit createRetrofit(String url) {
     return new Retrofit.Builder()
-      .baseUrl(API_HOST)
+      .baseUrl(url)
       .addConverterFactory(createFactory())
       .build();
   }
