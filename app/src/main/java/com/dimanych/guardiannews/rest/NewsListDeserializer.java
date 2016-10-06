@@ -32,43 +32,42 @@ import static com.dimanych.guardiannews.util.JsonUtils.getValue;
  */
 public class NewsListDeserializer implements JsonDeserializer<List<Entity>> {
 
-  @Override
-  public List<Entity> deserialize(JsonElement json, Type typeOfT,
-                                  JsonDeserializationContext context) throws JsonParseException
-  {
-    List<Entity> newsList = new ArrayList();
-    JsonObject responseObject = (JsonObject) json.getAsJsonObject().get(RESPONSE);
-    JsonArray jsonArray = responseObject.getAsJsonArray(RESULTS);
+    @Override
+    public List<Entity> deserialize(JsonElement json, Type typeOfT,
+                                    JsonDeserializationContext context) throws JsonParseException {
+        List<Entity> newsList = new ArrayList();
+        JsonObject responseObject = (JsonObject) json.getAsJsonObject().get(RESPONSE);
+        JsonArray jsonArray = responseObject.getAsJsonArray(RESULTS);
 
-    fillList(newsList, jsonArray);
-    return newsList;
-  }
-
-  private void fillList(List<Entity> newsList, JsonArray jsonArray) {
-    for (JsonElement element : jsonArray) {
-      JsonObject jsonObject = element.getAsJsonObject();
-      String webTitle = getValue(jsonObject, WEB_TITLE);
-      String apiUrl = getValue(jsonObject, API_URL);
-      Calendar webPublicationDate = getDate(jsonObject);
-      String thumbnail = getThumbnail(jsonObject);
-      newsList.add(new SimpleNews(webTitle, webPublicationDate, thumbnail, apiUrl));
+        fillList(newsList, jsonArray);
+        return newsList;
     }
-  }
 
-  private Calendar getDate(JsonObject jsonObject) {
-    String date = getValue(jsonObject, WEB_PUBLICATION_DATE);
-    Calendar cal = Calendar.getInstance();
-    try {
-      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-      cal.setTime(dateFormat.parse(date));
-    } catch (ParseException e) {
-      e.printStackTrace();
+    private void fillList(List<Entity> newsList, JsonArray jsonArray) {
+        for (JsonElement element : jsonArray) {
+            JsonObject jsonObject = element.getAsJsonObject();
+            String webTitle = getValue(jsonObject, WEB_TITLE);
+            String apiUrl = getValue(jsonObject, API_URL);
+            Calendar webPublicationDate = getDate(jsonObject);
+            String thumbnail = getThumbnail(jsonObject);
+            newsList.add(new SimpleNews(webTitle, webPublicationDate, thumbnail, apiUrl));
+        }
     }
-    return cal;
-  }
 
-  private String getThumbnail(JsonObject jsonObject) {
-    JsonObject fieldsObject = (JsonObject) jsonObject.get(FIELDS);
-    return getValue(fieldsObject, THUMBNAIL);
-  }
+    private Calendar getDate(JsonObject jsonObject) {
+        String date = getValue(jsonObject, WEB_PUBLICATION_DATE);
+        Calendar cal = Calendar.getInstance();
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            cal.setTime(dateFormat.parse(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return cal;
+    }
+
+    private String getThumbnail(JsonObject jsonObject) {
+        JsonObject fieldsObject = (JsonObject) jsonObject.get(FIELDS);
+        return getValue(fieldsObject, THUMBNAIL);
+    }
 }

@@ -19,13 +19,12 @@ import static com.dimanych.guardiannews.util.Constants.RESPONSE;
  */
 public class NewsBodyDeserializer implements JsonDeserializer<Entity> {
 
-  @Override
-  public Entity deserialize(JsonElement json, Type typeOfT,
-                            JsonDeserializationContext context) throws JsonParseException
-  {
-    JsonObject responseObject = (JsonObject) json.getAsJsonObject().get(RESPONSE);
-    JsonObject jsonArray = (JsonObject) responseObject.get(CONTENT);
+    @Override
+    public Entity deserialize(JsonElement json, Type typeOfT,
+                              JsonDeserializationContext context) throws JsonParseException {
+        JsonObject responseObject = (JsonObject) json.getAsJsonObject().get(RESPONSE);
+        JsonObject jsonArray = (JsonObject) responseObject.get(CONTENT);
 //    Entity news =
-    return null;
-  }
+        return null;
+    }
 }
