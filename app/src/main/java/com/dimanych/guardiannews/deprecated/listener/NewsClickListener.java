@@ -1,11 +1,11 @@
-package com.dimanych.guardiannews.listener;
+package com.dimanych.guardiannews.deprecated.listener;
 
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.dimanych.guardiannews.ui.activity.NewsActivity;
+import com.dimanych.guardiannews.deprecated.NewsActivity;
 import com.dimanych.guardiannews.ui.adapter.NewsAdapter;
 
 import static com.dimanych.guardiannews.util.Constants.NEWS;

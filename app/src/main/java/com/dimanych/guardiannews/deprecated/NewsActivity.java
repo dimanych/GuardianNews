@@ -1,4 +1,4 @@
-package com.dimanych.guardiannews.ui.activity;
+package com.dimanych.guardiannews.deprecated;
 
 import android.content.Context;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package com.dimanych.guardiannews.ui.activity;
+package com.dimanych.guardiannews.deprecated;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +9,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.dimanych.guardiannews.R;
-import com.dimanych.guardiannews.listener.NewsClickListener;
+import com.dimanych.guardiannews.deprecated.listener.NewsClickListener;
 import com.dimanych.guardiannews.model.Entity;
 import com.dimanych.guardiannews.rest.service.LoadService;
 import com.dimanych.guardiannews.rest.service.Receiver;

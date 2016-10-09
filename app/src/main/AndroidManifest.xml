@@ -9,8 +9,9 @@
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name"
     android:supportsRtl="true"
+    android:name=".App"
     android:theme="@style/AppTheme">
-    <activity android:name=".ui.activity.NewsListActivity">
+    <activity android:name=".deprecated.NewsListActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -18,7 +19,7 @@
       </intent-filter>
     </activity>
 
-    <activity android:name=".ui.activity.NewsActivity">
+    <activity android:name=".deprecated.NewsActivity">
     </activity>
 
     <service

@@ -4,7 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 
 import com.dimanych.guardiannews.model.Entity;
-import com.dimanych.guardiannews.ui.activity.NewsActivity;
+import com.dimanych.guardiannews.deprecated.NewsActivity;
 import com.dimanych.guardiannews.util.Constants;
 
 import retrofit2.Call;

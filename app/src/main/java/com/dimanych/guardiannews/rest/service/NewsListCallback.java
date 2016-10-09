@@ -3,7 +3,7 @@ package com.dimanych.guardiannews.rest.service;
 import android.app.Service;
 import android.content.Intent;
 
-import com.dimanych.guardiannews.ui.activity.NewsListActivity;
+import com.dimanych.guardiannews.deprecated.NewsListActivity;
 import com.dimanych.guardiannews.model.Entity;
 import com.dimanych.guardiannews.util.Constants;
 
