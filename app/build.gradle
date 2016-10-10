@@ -42,11 +42,19 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.0.0'
     compile 'me.tatarka:auto-parcel-gson:0.1'
     apt 'me.tatarka:auto-parcel-gson-processor:0.1'
+    //BINDING
+    compile 'com.jakewharton:butterknife:8.1.0'
+    apt 'com.jakewharton:butterknife-compiler:8.1.0'
+    //STREAM
+    compile 'com.annimon:stream:1.1.2'
+    //UI
+    compile 'com.github.ksoichiro:android-observablescrollview:1.6.0'
     //DI
     compile 'com.google.dagger:dagger:2.0'
     apt 'com.google.dagger:dagger-compiler:2.0'
     //IMAGE
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'jp.wasabeef:glide-transformations:2.0.1'
     //TEST
     testCompile 'junit:junit:4.12'
 }

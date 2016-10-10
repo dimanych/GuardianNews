@@ -1,8 +1,9 @@
 package com.dimanych.guardiannews.ui;
 
+import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 
-import com.dimanych.guardiannews.di.AppComponent;
+import butterknife.ButterKnife;
 
 /**
  * <p></p>
@@ -10,9 +11,10 @@ import com.dimanych.guardiannews.di.AppComponent;
  * @author Dmitriy Grigoriev
  */
 public class BaseActivity extends AppCompatActivity {
-    protected AppComponent component;
 
-    public AppComponent getComponent() {
-        return component;
+    @Override
+    public void setContentView(@LayoutRes int layoutResID) {
+        super.setContentView(layoutResID);
+        ButterKnife.bind(this);
     }
 }

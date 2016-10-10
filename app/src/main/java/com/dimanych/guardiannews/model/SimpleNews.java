@@ -16,22 +16,22 @@ public class SimpleNews implements Entity {
     public String webTitle;
     @SerializedName("webPublicationDate")
     public String webPublicationDate;
-    @SerializedName("thumbnail")
-    public String thumbnail;
+    @SerializedName("fields")
+    public Field field;
     @SerializedName("apiUrl")
     public String apiUrl;
 
-    public SimpleNews(String webTitle, String webPublicationDate, String thumbnail, String apiUrl) {
+    public SimpleNews(String webTitle, String webPublicationDate, Field field, String apiUrl) {
         this.webTitle = webTitle;
         this.webPublicationDate = webPublicationDate;
-        this.thumbnail = thumbnail;
+        this.field = field;
         this.apiUrl = apiUrl;
     }
 
     public SimpleNews(Parcel in) {
         this.webTitle = in.readString();
         this.webPublicationDate = (String) in.readSerializable();
-        this.thumbnail = in.readString();
+        this.field = (Field) in.readSerializable();
         this.apiUrl = in.readString();
     }
 
@@ -44,7 +44,7 @@ public class SimpleNews implements Entity {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(webTitle);
         dest.writeSerializable(webPublicationDate);
-        dest.writeString(thumbnail);
+        dest.writeSerializable(field);
         dest.writeString(apiUrl);
     }
 

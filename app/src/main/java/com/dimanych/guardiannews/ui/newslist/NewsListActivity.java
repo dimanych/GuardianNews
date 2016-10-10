@@ -1,38 +1,50 @@
 package com.dimanych.guardiannews.ui.newslist;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ListView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.dimanych.guardiannews.App;
 import com.dimanych.guardiannews.R;
 import com.dimanych.guardiannews.model.Entity;
 import com.dimanych.guardiannews.model.SimpleNews;
 import com.dimanych.guardiannews.ui.BaseActivity;
+import com.dimanych.guardiannews.ui.NewsActivity;
 import com.dimanych.guardiannews.ui.adapter.NewsAdapter;
-import com.dimanych.guardiannews.ui.listener.NewsClickListener;
+import com.dimanych.guardiannews.util.helper.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+
+import static com.dimanych.guardiannews.util.Constants.NEWS;
 import static com.dimanych.guardiannews.util.Constants.RESULTS;
 
-public class NewsListActivity extends BaseActivity implements INewsView {
+public class NewsListActivity extends BaseActivity implements INewsView, NewsAdapter.ItemListener {
 
     private List<Entity> newsList = new ArrayList<>();
     private NewsAdapter newsAdapter;
 
+    @BindView(R.id.news_recycler_view)
+    RecyclerView newsRecycler;
+
     @Inject
     NewsPresenter presenter;
+    @Inject
+    ImageLoader imageLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_news_list);
         ((App) getApplication()).getAppComponent().inject(this);
+        setContentView(R.layout.activity_news_list);
         presenter.setView(this);
         initUI();
+        presenter.loadNews();
     }
 
     @Override
@@ -43,11 +55,9 @@ public class NewsListActivity extends BaseActivity implements INewsView {
     }
 
     private void initUI() {
-        newsAdapter = new NewsAdapter(this, newsList);
-        ListView newsListView = (ListView) findViewById(R.id.news_list);
-        newsListView.setAdapter(newsAdapter);
-        newsListView.setOnItemClickListener(new NewsClickListener(this, newsAdapter));
-        presenter.loadNews();
+        newsAdapter = new NewsAdapter(imageLoader, this);
+        newsRecycler.setLayoutManager(new LinearLayoutManager(this));
+        newsRecycler.setAdapter(newsAdapter);
     }
 
     @Override
@@ -59,5 +69,12 @@ public class NewsListActivity extends BaseActivity implements INewsView {
     protected void onDestroy() {
         super.onDestroy();
         presenter.unSubscribeAll();
+    }
+
+    @Override
+    public void onItemClick(SimpleNews news) {
+        Intent intent = new Intent(getApplicationContext(), NewsActivity.class);
+        intent.putExtra(NEWS, news);
+        startActivity(intent);
     }
 }

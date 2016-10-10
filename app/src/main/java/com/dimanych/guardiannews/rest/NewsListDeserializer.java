@@ -50,7 +50,7 @@ public class NewsListDeserializer implements JsonDeserializer<List<SimpleNews>> 
 //            Calendar webPublicationDate = getDate(jsonObject);
             String webPublicationDate = "hoho";
             String thumbnail = getThumbnail(jsonObject);
-            newsList.add(new SimpleNews(webTitle, webPublicationDate, thumbnail, apiUrl));
+//            newsList.add(new SimpleNews(webTitle, webPublicationDate, thumbnail, apiUrl));
         }
     }
 
