@@ -5,16 +5,9 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
-import com.dimanych.guardiannews.rest.NewsListDeserializer;
 import com.dimanych.guardiannews.rest.RetrofitSetup;
 
-import java.util.List;
-
-import static com.dimanych.guardiannews.util.Constants.API_HOST;
-import static com.dimanych.guardiannews.util.Constants.API_KEY_VALUE;
 import static com.dimanych.guardiannews.util.Constants.NOT_YET_IMPLEMENTED;
-import static com.dimanych.guardiannews.util.Constants.THUMBNAIL;
-import static com.dimanych.guardiannews.util.Constants.WORLD;
 
 
 /**
@@ -30,10 +23,10 @@ public class LoadService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         RetrofitSetup retrofitSetup = new RetrofitSetup();
 
-        retrofitSetup
-                .createService(new NewsListDeserializer(), List.class, API_HOST)
-                .getList(WORLD, API_KEY_VALUE, THUMBNAIL)
-                .enqueue(new NewsListCallback(this));
+//        retrofitSetup
+//                .createService(new NewsListDeserializer(), List.class, API_HOST)
+//                .getList(WORLD, API_KEY_VALUE, THUMBNAIL)
+//                .enqueue(new NewsListCallback(this));
 
         return super.onStartCommand(intent, flags, startId);
     }

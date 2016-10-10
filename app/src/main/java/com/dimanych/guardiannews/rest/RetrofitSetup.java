@@ -28,10 +28,10 @@ public class RetrofitSetup {
      * @return
      */
     @NonNull
-    public ApiService createService(JsonDeserializer jsonDeserializer, Class classItem, String url) {
+    public NewsApi createService(JsonDeserializer jsonDeserializer, Class classItem, String url) {
         this.jsonDeserializer = jsonDeserializer;
         this.classItem = classItem;
-        return createRetrofit(url).create(ApiService.class);
+        return createRetrofit(url).create(NewsApi.class);
     }
 
     /**

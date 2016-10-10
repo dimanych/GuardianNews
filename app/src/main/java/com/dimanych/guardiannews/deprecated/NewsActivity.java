@@ -79,11 +79,4 @@ public class NewsActivity extends AppCompatActivity {
         receiver.register(this, new IntentFilter(BROADCAST_TAG));
     }
 
-
-    @Override
-    protected void onDestroy() {
-        receiver.unregister(this);
-        stopService(new Intent(this, SingleNewsService.class));
-        super.onDestroy();
-    }
 }

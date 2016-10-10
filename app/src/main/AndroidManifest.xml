@@ -11,7 +11,7 @@
     android:supportsRtl="true"
     android:name=".App"
     android:theme="@style/AppTheme">
-    <activity android:name=".deprecated.NewsListActivity">
+    <activity android:name=".ui.newslist.NewsListActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -22,14 +22,6 @@
     <activity android:name=".deprecated.NewsActivity">
     </activity>
 
-    <service
-            android:name=".rest.service.LoadService"
-            android:enabled="true"
-            android:exported="true"/>
-    <service
-            android:name=".rest.service.SingleNewsService"
-            android:enabled="true"
-            android:exported="true"/>
   </application>
 
 </manifest>

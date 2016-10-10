@@ -1,6 +1,12 @@
 package com.dimanych.guardiannews.util;
 
+import com.dimanych.guardiannews.model.SimpleNews;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonObject;
+
+import static com.dimanych.guardiannews.util.Constants.RESPONSE;
 
 /**
  * <p>Утилита для работы с json</p>
@@ -8,6 +14,23 @@ import com.google.gson.JsonObject;
  * @author Dmitriy Grigoriev
  */
 public class JsonUtils {
+
+    private static final Gson GSON = new GsonBuilder()
+            .registerTypeAdapter(SimpleNews.class, provideSimpleNews())
+            .create();
+
+    private static JsonDeserializer<SimpleNews> provideSimpleNews() {
+        return (src, type, context) -> {
+            JsonObject responseObject = (JsonObject) src.getAsJsonObject().get(RESPONSE);
+
+            return null;
+        };
+    }
+
+    public static Gson provideGson() {
+        return GSON;
+    }
+
     /**
      * Вытянуть строку по тэгу
      *
@@ -33,4 +56,6 @@ public class JsonUtils {
         String value = getValue(object, tag);
         return Integer.valueOf(value);
     }
+
+
 }
