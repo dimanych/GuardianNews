@@ -1,9 +1,8 @@
 package com.dimanych.guardiannews.rest;
 
 import com.dimanych.guardiannews.model.Entity;
+import com.dimanych.guardiannews.model.ResponseData;
 import com.dimanych.guardiannews.model.SimpleNews;
-
-import java.util.List;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -26,9 +25,9 @@ public interface NewsApi {
      * @return список Entity
      */
     @GET(SEARCH)
-    Observable<List<SimpleNews>> getList(@Query(SECTION) String section,
-                                         @Query(API_KEY) String apiKey,
-                                         @Query(SHOW_FIELDS) String showFields);
+    Observable<ResponseData<SimpleNews>> getList(@Query(SECTION) String section,
+                                                 @Query(API_KEY) String apiKey,
+                                                 @Query(SHOW_FIELDS) String showFields);
 
     @GET
     Observable<Entity> getNewsEntity(@Query(API_KEY) String apiKey,

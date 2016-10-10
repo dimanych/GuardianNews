@@ -1,4 +1,4 @@
-package com.dimanych.guardiannews.deprecated;
+package com.dimanych.guardiannews.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,6 @@ import com.dimanych.guardiannews.R;
 import com.dimanych.guardiannews.model.SimpleNews;
 import com.dimanych.guardiannews.rest.service.Receiver;
 import com.dimanych.guardiannews.rest.service.SingleNewsService;
-import com.dimanych.guardiannews.ui.ProgressSpinnerHolder;
 import com.dimanych.guardiannews.util.Constants;
 import com.dimanych.guardiannews.util.Objects;
 

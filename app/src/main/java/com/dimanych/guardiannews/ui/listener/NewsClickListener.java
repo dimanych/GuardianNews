@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.dimanych.guardiannews.deprecated.NewsActivity;
+import com.dimanych.guardiannews.ui.NewsActivity;
 import com.dimanych.guardiannews.ui.adapter.NewsAdapter;
 
 import static com.dimanych.guardiannews.util.Constants.NEWS;

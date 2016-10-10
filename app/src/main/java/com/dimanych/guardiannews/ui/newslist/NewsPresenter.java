@@ -25,8 +25,11 @@ public class NewsPresenter extends BasePresenter<NewsListActivity> {
 
     public void loadNews() {
         subscribe(newsApi.getList(WORLD, API_KEY_VALUE, THUMBNAIL)
-                .subscribe(news -> getView().loadNews(news), Throwable::printStackTrace)
-
+                .map(responseData -> responseData.response)
+                .map(response -> response.data)
+                .subscribe(news -> getView().loadNews(news),
+                        Throwable::printStackTrace)
         );
+
     }
 }

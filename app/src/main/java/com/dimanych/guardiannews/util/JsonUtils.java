@@ -6,6 +6,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonObject;
 
+import auto.parcelgson.gson.AutoParcelGsonTypeAdapterFactory;
+
 import static com.dimanych.guardiannews.util.Constants.RESPONSE;
 
 /**
@@ -16,7 +18,7 @@ import static com.dimanych.guardiannews.util.Constants.RESPONSE;
 public class JsonUtils {
 
     private static final Gson GSON = new GsonBuilder()
-            .registerTypeAdapter(SimpleNews.class, provideSimpleNews())
+            .registerTypeAdapterFactory(new AutoParcelGsonTypeAdapterFactory())
             .create();
 
     private static JsonDeserializer<SimpleNews> provideSimpleNews() {

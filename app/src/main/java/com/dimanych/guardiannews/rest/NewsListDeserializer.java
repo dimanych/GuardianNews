@@ -1,6 +1,5 @@
 package com.dimanych.guardiannews.rest;
 
-import com.dimanych.guardiannews.model.Entity;
 import com.dimanych.guardiannews.model.SimpleNews;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
@@ -30,12 +29,12 @@ import static com.dimanych.guardiannews.util.JsonUtils.getValue;
  *
  * @author Dmitriy Grigoriev
  */
-public class NewsListDeserializer implements JsonDeserializer<List<Entity>> {
+public class NewsListDeserializer implements JsonDeserializer<List<SimpleNews>> {
 
     @Override
-    public List<Entity> deserialize(JsonElement json, Type typeOfT,
+    public List<SimpleNews> deserialize(JsonElement json, Type typeOfT,
                                     JsonDeserializationContext context) throws JsonParseException {
-        List<Entity> newsList = new ArrayList();
+        List<SimpleNews> newsList = new ArrayList();
         JsonObject responseObject = (JsonObject) json.getAsJsonObject().get(RESPONSE);
         JsonArray jsonArray = responseObject.getAsJsonArray(RESULTS);
 
@@ -43,12 +42,13 @@ public class NewsListDeserializer implements JsonDeserializer<List<Entity>> {
         return newsList;
     }
 
-    private void fillList(List<Entity> newsList, JsonArray jsonArray) {
+    private void fillList(List<SimpleNews> newsList, JsonArray jsonArray) {
         for (JsonElement element : jsonArray) {
             JsonObject jsonObject = element.getAsJsonObject();
             String webTitle = getValue(jsonObject, WEB_TITLE);
             String apiUrl = getValue(jsonObject, API_URL);
-            Calendar webPublicationDate = getDate(jsonObject);
+//            Calendar webPublicationDate = getDate(jsonObject);
+            String webPublicationDate = "hoho";
             String thumbnail = getThumbnail(jsonObject);
             newsList.add(new SimpleNews(webTitle, webPublicationDate, thumbnail, apiUrl));
         }

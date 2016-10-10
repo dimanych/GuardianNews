@@ -3,7 +3,7 @@ package com.dimanych.guardiannews.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Calendar;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * <p></p>
@@ -12,12 +12,16 @@ import java.util.Calendar;
  */
 public class SimpleNews implements Entity {
 
+    @SerializedName("webTitle")
     public String webTitle;
-    public Calendar webPublicationDate;
+    @SerializedName("webPublicationDate")
+    public String webPublicationDate;
+    @SerializedName("thumbnail")
     public String thumbnail;
+    @SerializedName("apiUrl")
     public String apiUrl;
 
-    public SimpleNews(String webTitle, Calendar webPublicationDate, String thumbnail, String apiUrl) {
+    public SimpleNews(String webTitle, String webPublicationDate, String thumbnail, String apiUrl) {
         this.webTitle = webTitle;
         this.webPublicationDate = webPublicationDate;
         this.thumbnail = thumbnail;
@@ -26,7 +30,7 @@ public class SimpleNews implements Entity {
 
     public SimpleNews(Parcel in) {
         this.webTitle = in.readString();
-        this.webPublicationDate = (Calendar) in.readSerializable();
+        this.webPublicationDate = (String) in.readSerializable();
         this.thumbnail = in.readString();
         this.apiUrl = in.readString();
     }
