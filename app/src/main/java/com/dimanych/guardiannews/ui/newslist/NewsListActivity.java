@@ -10,7 +10,7 @@ import com.dimanych.guardiannews.R;
 import com.dimanych.guardiannews.model.Entity;
 import com.dimanych.guardiannews.model.SimpleNews;
 import com.dimanych.guardiannews.ui.BaseActivity;
-import com.dimanych.guardiannews.ui.NewsActivity;
+import com.dimanych.guardiannews.ui.singlenews.NewsActivity;
 import com.dimanych.guardiannews.ui.adapter.NewsAdapter;
 import com.dimanych.guardiannews.util.helper.ImageLoader;
 
@@ -24,7 +24,7 @@ import butterknife.BindView;
 import static com.dimanych.guardiannews.util.Constants.NEWS;
 import static com.dimanych.guardiannews.util.Constants.RESULTS;
 
-public class NewsListActivity extends BaseActivity implements INewsView, NewsAdapter.ItemListener {
+public class NewsListActivity extends BaseActivity implements INewsListView, NewsAdapter.ItemListener {
 
     private List<Entity> newsList = new ArrayList<>();
     private NewsAdapter newsAdapter;
@@ -33,7 +33,7 @@ public class NewsListActivity extends BaseActivity implements INewsView, NewsAda
     RecyclerView newsRecycler;
 
     @Inject
-    NewsPresenter presenter;
+    NewsListPresenter presenter;
     @Inject
     ImageLoader imageLoader;
 

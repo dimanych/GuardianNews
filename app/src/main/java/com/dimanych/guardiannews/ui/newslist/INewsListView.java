@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author Dmitriy Grigoriev
  */
-public interface INewsView extends IBaseView {
+public interface INewsListView extends IBaseView {
 
     void loadNews(List<SimpleNews> news);
 }

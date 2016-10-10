@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
-import com.dimanych.guardiannews.rest.RetrofitSetup;
-
 import static com.dimanych.guardiannews.util.Constants.API_URL;
 import static com.dimanych.guardiannews.util.Constants.NOT_YET_IMPLEMENTED;
 
@@ -18,7 +16,7 @@ import static com.dimanych.guardiannews.util.Constants.NOT_YET_IMPLEMENTED;
 public class SingleNewsService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        RetrofitSetup retrofitSetup = new RetrofitSetup();
+//        RetrofitSetup retrofitSetup = new RetrofitSetup();
         String apiUrl = intent.getStringExtra(API_URL);
 
 //        retrofitSetup

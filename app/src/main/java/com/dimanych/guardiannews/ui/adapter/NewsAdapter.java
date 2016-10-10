@@ -10,10 +10,10 @@ import android.widget.TextView;
 import com.annimon.stream.Optional;
 import com.dimanych.guardiannews.R;
 import com.dimanych.guardiannews.model.SimpleNews;
+import com.dimanych.guardiannews.util.CustomDateUtils;
 import com.dimanych.guardiannews.util.Objects;
 import com.dimanych.guardiannews.util.helper.ImageLoader;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,9 +83,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
         private void setNews(SimpleNews news) {
             this.news = news;
             webTitle.setText(news.webTitle);
-            SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy HH:mm");
-//        String webPublicationDateStr = String.valueOf(sdf.format(news.webPublicationDate.getTime()));
-            String webPublicationDateStr = news.webPublicationDate;
+            String webPublicationDateStr = CustomDateUtils.convertDateToStr(news.webPublicationDate);
             webPublicationDate.setText(webPublicationDateStr);
 
             if (Objects.nonNull(Optional.ofNullable(news)
@@ -94,9 +92,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
                     .orElse(null)))
             {
                 Observable.just(news.field.thumbnail)
-                        .map(url -> url.replace("https", "http"))
-                        .subscribe(url -> imageLoader.loadImage(url, thumbView),
-                                Throwable::printStackTrace);
+                        .subscribe(url -> imageLoader.loadImage(url, thumbView), Throwable::printStackTrace);
             }
         }
 

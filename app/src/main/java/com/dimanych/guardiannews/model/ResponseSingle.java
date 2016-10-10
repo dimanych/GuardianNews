@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @author Dmitriy Grigoriev
  */
-public class ResponseData<T> {
+public class ResponseSingle {
     @SerializedName("response")
-    public Page<T> response;
+    public Content response;
 }

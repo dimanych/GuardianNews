@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.NewsActivity">
+        <activity android:name=".ui.singlenews.NewsActivity">
         </activity>
 
     </application>

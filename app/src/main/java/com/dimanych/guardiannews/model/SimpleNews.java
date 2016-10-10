@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 /**
  * <p></p>
  *
@@ -12,16 +14,19 @@ import com.google.gson.annotations.SerializedName;
  */
 public class SimpleNews implements Entity {
 
+    @SerializedName("id")
+    public String id;
     @SerializedName("webTitle")
     public String webTitle;
     @SerializedName("webPublicationDate")
-    public String webPublicationDate;
+    public Date webPublicationDate;
     @SerializedName("fields")
     public Field field;
     @SerializedName("apiUrl")
     public String apiUrl;
 
-    public SimpleNews(String webTitle, String webPublicationDate, Field field, String apiUrl) {
+    public SimpleNews(String id, String webTitle, Date webPublicationDate, Field field, String apiUrl) {
+        this.id = id;
         this.webTitle = webTitle;
         this.webPublicationDate = webPublicationDate;
         this.field = field;
@@ -29,8 +34,9 @@ public class SimpleNews implements Entity {
     }
 
     public SimpleNews(Parcel in) {
+        this.id = in.readString();
         this.webTitle = in.readString();
-        this.webPublicationDate = (String) in.readSerializable();
+        this.webPublicationDate = (Date) in.readSerializable();
         this.field = (Field) in.readSerializable();
         this.apiUrl = in.readString();
     }
@@ -42,6 +48,7 @@ public class SimpleNews implements Entity {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
         dest.writeString(webTitle);
         dest.writeSerializable(webPublicationDate);
         dest.writeSerializable(field);
