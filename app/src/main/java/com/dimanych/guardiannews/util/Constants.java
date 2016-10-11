@@ -41,6 +41,12 @@ public abstract class Constants {
     public static final String WORLD = "world";
     public static final String SPORT = "sport";
     public static final String CULTURE = "culture";
+    public static final String BUSINESS = "business";
+    public static final String LIFEANDSTYLE = "lifeandstyle";
+    public static final String FASHION = "fashion";
+    public static final String ENVIRONMENT = "environment";
+    public static final String TECHNOLOGY = "technology";
+    public static final String TRAVEL = "travel";
     /**
      * API key
      */
