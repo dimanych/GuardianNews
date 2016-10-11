@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
+              android:layout_marginTop="@dimen/activity_horizontal_margin"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
@@ -12,18 +13,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_camera_alt_black_18dp"
-            />
+            android:tint="@color/nobel"
+            android:layout_marginRight="@dimen/img_item_padding"
+            android:src="@drawable/ic_camera_alt_black_18dp"/>
 
         <TextView
             android:id="@+id/alt"
             style="@style/ImageAltTheme"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
