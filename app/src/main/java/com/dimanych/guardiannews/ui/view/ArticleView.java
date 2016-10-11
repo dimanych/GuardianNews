@@ -4,11 +4,11 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dimanych.guardiannews.App;
+import com.dimanych.guardiannews.R;
 import com.dimanych.guardiannews.util.helper.ImageLoader;
 
 import org.jsoup.Jsoup;
@@ -73,9 +73,15 @@ public class ArticleView extends LinearLayout {
         }
     }
 
-    private void createButton() {
-        Button button = new Button(getContext());
-        button.setText("pppp");
-        addView(button);
+    private void setCapital(String body) {
+        TextView capitalView = new TextView(getContext());
+        capitalView.setText(String.valueOf(body.charAt(3)));
+        if (Build.VERSION.SDK_INT < 23) {
+            capitalView.setTextAppearance(getContext(), R.style.CapitalTextTheme);
+        } else{
+            capitalView.setTextAppearance(R.style.CapitalTextTheme);
+        }
+        addView(capitalView);
     }
+
 }

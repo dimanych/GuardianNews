@@ -1,6 +1,7 @@
 package com.dimanych.guardiannews.ui.singlenews;
 
 import android.os.Bundle;
+import android.text.Html;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -77,10 +78,10 @@ public class NewsActivity extends BaseActivity implements INewsView {
                 .map(n -> n.field)
                 .map(field -> field.body)
                 .orElse(EMPTY));
-        newsTrail.setText(Optional.ofNullable(news)
+        newsTrail.setText(Html.fromHtml(Optional.ofNullable(news)
                 .map(n -> n.field)
                 .map(field -> field.trailText)
-                .orElse(EMPTY));
+                .orElse(EMPTY)));
         loadingBar.setVisibility(GONE);
     }
 }
