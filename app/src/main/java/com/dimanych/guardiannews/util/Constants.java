@@ -25,8 +25,6 @@ public abstract class Constants {
     /**
      * Теги-парсеры
      */
-    public static final String RESULTS = "results";
-    public static final String RESPONSE = "response";
     public static final String API_KEY = "api-key";
     public static final String SHOW_FIELDS = "show-fields";
     public static final String FIELDS = "fields";
@@ -37,23 +35,16 @@ public abstract class Constants {
     public static final String API_URL = "apiUrl";
     public static final String API_LINK = "apiLink";
     public static final String WEB_PUBLICATION_DATE = "webPublicationDate";
-    public static final String WORLD = "world";
     /**
-     *
+     * Sections
      */
-    public static final String DESERIALIZER = "deserializer";
-    public static final String NEWS_BODY_DESERIALIZER = "NewsBodyDeserializer";
-    public static final String NEWS_LIST_DESERIALIZER = "NewsListDeserializer";
+    public static final String WORLD = "world";
+    public static final String SPORT = "sport";
+    public static final String CULTURE = "culture";
     /**
-     * Ключ для соединения к API
+     * API key
      */
     public static final String API_KEY_VALUE = "403e2fc8-136e-450b-b2a4-623faad17e0b";
-    /**
-     * Статусы загрузки
-     */
-    public static final String STATUS = "status";
-    public static final String STATUS_FAIL = "FAIL";
-    public static final String STATUS_SUCCESS = "SUCCESS";
     /**
      *
      */

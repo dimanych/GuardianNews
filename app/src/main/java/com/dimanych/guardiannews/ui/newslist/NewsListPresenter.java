@@ -9,14 +9,13 @@ import rx.android.schedulers.AndroidSchedulers;
 
 import static com.dimanych.guardiannews.util.Constants.API_KEY_VALUE;
 import static com.dimanych.guardiannews.util.Constants.THUMBNAIL;
-import static com.dimanych.guardiannews.util.Constants.WORLD;
 
 /**
  * <p></p>
  *
  * @author Dmitriy Grigoriev
  */
-public class NewsListPresenter extends BasePresenter<NewsListActivity> {
+public class NewsListPresenter extends BasePresenter<SectionFragment> {
 
     NewsApi newsApi;
 
@@ -25,8 +24,8 @@ public class NewsListPresenter extends BasePresenter<NewsListActivity> {
         this.newsApi = newsApi;
     }
 
-    public void loadNews() {
-        subscribe(newsApi.getNewsList(WORLD, API_KEY_VALUE, THUMBNAIL)
+    public void loadNews(String section) {
+        subscribe(newsApi.getNewsList(section, API_KEY_VALUE, THUMBNAIL)
                 .map(response -> response.response)
                 .map(page -> page.results)
                 .observeOn(AndroidSchedulers.mainThread())

@@ -1,6 +1,7 @@
 package com.dimanych.guardiannews.di;
 
 import com.dimanych.guardiannews.ui.newslist.NewsListActivity;
+import com.dimanych.guardiannews.ui.newslist.SectionFragment;
 import com.dimanych.guardiannews.ui.singlenews.NewsActivity;
 import com.dimanych.guardiannews.ui.view.ImgView;
 import com.dimanych.guardiannews.ui.view.ArticleView;
@@ -25,4 +26,6 @@ public interface AppComponent {
     void inject(ArticleView articleView);
 
     void inject(ImgView articleImageView);
+
+    void inject(SectionFragment sectionFragment);
 }
