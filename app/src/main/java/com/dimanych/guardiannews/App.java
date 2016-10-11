@@ -28,6 +28,11 @@ public class App extends Application {
                 .apiModule(new ApiModule())
                 .build();
 
+//        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+//                .setDefaultFontPath("fonts/robotolight.ttf")
+//                .setFontAttrId(R.attr.fontPath)
+//                .build()
+//        );
     }
 
     public AppComponent getAppComponent() {

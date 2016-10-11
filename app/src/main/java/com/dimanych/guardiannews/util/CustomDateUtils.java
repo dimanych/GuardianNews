@@ -12,7 +12,7 @@ public class CustomDateUtils {
 
     public static String convertDateToStr(Date date) {
         if (Objects.nonNull(date)) {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy HH:mm");
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd MMM yyyy");
             return String.valueOf(sdf.format(date.getTime()));
         }
         return "";

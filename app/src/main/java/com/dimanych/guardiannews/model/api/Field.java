@@ -33,5 +33,9 @@ public class Field implements Serializable {
     @SerializedName("charCount")
     public String charCount;
 
+    @Nullable
+    @SerializedName("trailText")
+    public String trailText;
+
 
 }

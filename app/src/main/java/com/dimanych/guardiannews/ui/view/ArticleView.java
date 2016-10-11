@@ -16,9 +16,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.inject.Inject;
 
 /**
@@ -60,7 +57,6 @@ public class ArticleView extends LinearLayout {
     public void setBody(String body) {
         Document document = Jsoup.parse(body);
         Elements elements = document.select("body *");
-        List<String> valList = new ArrayList<>();
         for (Element element : elements) {
             switch (element.tag().getName()) {
                 case "p":

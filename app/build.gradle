@@ -52,6 +52,8 @@ dependencies {
     //DI
     compile 'com.google.dagger:dagger:2.0'
     apt 'com.google.dagger:dagger-compiler:2.0'
+    //GRAPHIC
+    compile 'uk.co.chrisjenx:calligraphy:2.1.0'
     //IMAGE
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'jp.wasabeef:glide-transformations:2.0.1'

@@ -30,8 +30,10 @@ public class NewsActivity extends BaseActivity implements INewsView {
     TextView newsTitle;
     @BindView(R.id.thumbnail)
     ImageView thumbnailView;
-    @BindView(R.id.news_section)
-    TextView newsSection;
+    @BindView(R.id.news_trail)
+    TextView newsTrail;
+    @BindView(R.id.news_author)
+    TextView newsAuthor;
     @BindView(R.id.news_created)
     TextView newsCreated;
     @BindView(R.id.progress_bar)
@@ -66,11 +68,18 @@ public class NewsActivity extends BaseActivity implements INewsView {
 
     @Override
     public void loadSingleNews(Content news) {
-        newsSection.setText(news.sectionName);
+        newsAuthor.setText(Optional.ofNullable(news)
+                .map(n -> n.field)
+                .map(field -> field.byline)
+                .orElse(EMPTY));
         newsCreated.setText(CustomDateUtils.convertDateToStr(news.webPublicationDate));
         newsArticle.setBody(Optional.ofNullable(news)
                 .map(n -> n.field)
                 .map(field -> field.body)
+                .orElse(EMPTY));
+        newsTrail.setText(Optional.ofNullable(news)
+                .map(n -> n.field)
+                .map(field -> field.trailText)
                 .orElse(EMPTY));
         loadingBar.setVisibility(GONE);
     }
