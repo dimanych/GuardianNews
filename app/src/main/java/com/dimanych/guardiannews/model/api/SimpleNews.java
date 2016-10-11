@@ -1,8 +1,9 @@
-package com.dimanych.guardiannews.model;
+package com.dimanych.guardiannews.model.api;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.dimanych.guardiannews.model.Entity;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;

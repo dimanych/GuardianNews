@@ -1,7 +1,7 @@
 package com.dimanych.guardiannews.ui.newslist;
 
 import com.dimanych.guardiannews.base.IBaseView;
-import com.dimanych.guardiannews.model.SimpleNews;
+import com.dimanych.guardiannews.model.api.SimpleNews;
 
 import java.util.List;
 
@@ -13,4 +13,5 @@ import java.util.List;
 public interface INewsListView extends IBaseView {
 
     void loadNews(List<SimpleNews> news);
+    void loadFailed(Throwable t);
 }

@@ -6,8 +6,8 @@ import android.widget.TextView;
 
 import com.dimanych.guardiannews.App;
 import com.dimanych.guardiannews.R;
-import com.dimanych.guardiannews.model.Content;
-import com.dimanych.guardiannews.model.SimpleNews;
+import com.dimanych.guardiannews.model.api.Content;
+import com.dimanych.guardiannews.model.api.SimpleNews;
 import com.dimanych.guardiannews.ui.BaseActivity;
 import com.dimanych.guardiannews.util.Constants;
 import com.dimanych.guardiannews.util.CustomDateUtils;

@@ -27,7 +27,8 @@ public class NewsPresenter extends BasePresenter<NewsActivity> {
     public void loadSingleNews(String apiUrl) {
 
         subscribe(newsApi.getNews(apiUrl, API_KEY_VALUE, ALL)
-                .map(responseSingle -> responseSingle.response)
+                .map(responseResponseResults -> responseResponseResults.response)
+                .map(response -> response.content)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(news -> getView().loadSingleNews(news), Throwable::printStackTrace));
     }

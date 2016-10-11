@@ -1,14 +1,10 @@
 package com.dimanych.guardiannews.util;
 
-import com.dimanych.guardiannews.model.SimpleNews;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonObject;
 
 import auto.parcelgson.gson.AutoParcelGsonTypeAdapterFactory;
-
-import static com.dimanych.guardiannews.util.Constants.RESPONSE;
 
 /**
  * <p>Утилита для работы с json</p>
@@ -20,14 +16,6 @@ public class JsonUtils {
     private static final Gson GSON = new GsonBuilder()
             .registerTypeAdapterFactory(new AutoParcelGsonTypeAdapterFactory())
             .create();
-
-    private static JsonDeserializer<SimpleNews> provideSimpleNews() {
-        return (src, type, context) -> {
-            JsonObject responseObject = (JsonObject) src.getAsJsonObject().get(RESPONSE);
-
-            return null;
-        };
-    }
 
     public static Gson provideGson() {
         return GSON;

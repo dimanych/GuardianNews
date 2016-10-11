@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.annimon.stream.Optional;
 import com.dimanych.guardiannews.R;
-import com.dimanych.guardiannews.model.SimpleNews;
+import com.dimanych.guardiannews.model.api.SimpleNews;
 import com.dimanych.guardiannews.util.CustomDateUtils;
 import com.dimanych.guardiannews.util.Objects;
 import com.dimanych.guardiannews.util.helper.ImageLoader;

@@ -27,11 +27,16 @@ public class NewsListPresenter extends BasePresenter<NewsListActivity> {
 
     public void loadNews() {
         subscribe(newsApi.getNewsList(WORLD, API_KEY_VALUE, THUMBNAIL)
-                .map(responseData -> responseData.response)
-                .map(response -> response.results)
+                .map(response -> response.response)
+                .map(page -> page.results)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(news -> getView().loadNews(news), Throwable::printStackTrace)
+                .subscribe(news -> getView().loadNews(news), throwable -> throwFail(throwable))
         );
 
+    }
+
+    private void throwFail(Throwable t) {
+        t.printStackTrace();
+        getView().loadFailed(t);
     }
 }

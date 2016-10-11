@@ -1,8 +1,8 @@
 package com.dimanych.guardiannews.rest;
 
-import com.dimanych.guardiannews.model.ResponseResults;
-import com.dimanych.guardiannews.model.ResponseSingle;
-import com.dimanych.guardiannews.model.SimpleNews;
+import com.dimanych.guardiannews.model.api.ListNewsPage;
+import com.dimanych.guardiannews.model.api.ContentPage;
+import com.dimanych.guardiannews.model.api.ResponseResults;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -24,15 +24,17 @@ import static com.dimanych.guardiannews.util.Constants.SHOW_FIELDS;
  */
 public interface NewsApi {
     /**
-     * @return список Entity
+     * @return list of news by section
      */
     @GET(SEARCH)
-    Observable<ResponseResults<SimpleNews>> getNewsList(@Query(SECTION) String section,
-                                                        @Query(API_KEY) String apiKey,
-                                                        @Query(SHOW_FIELDS) String showFields);
-
+    Observable<ResponseResults<ListNewsPage>> getNewsList(@Query(SECTION) String section,
+                                                          @Query(API_KEY) String apiKey,
+                                                          @Query(SHOW_FIELDS) String showFields);
+    /**
+     * @return news by API link
+     */
     @GET("{apiLink}")
-    Observable<ResponseSingle> getNews(@Path(value = API_LINK, encoded = true) String apiUrl,
-                                       @Query(API_KEY) String apiKey,
-                                       @Query(SHOW_FIELDS) String showFields);
+    Observable<ResponseResults<ContentPage>> getNews(@Path(value = API_LINK, encoded = true) String apiUrl,
+                                                     @Query(API_KEY) String apiKey,
+                                                     @Query(SHOW_FIELDS) String showFields);
 }

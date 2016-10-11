@@ -1,4 +1,4 @@
-package com.dimanych.guardiannews.model;
+package com.dimanych.guardiannews.model.api;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -9,7 +9,8 @@ import java.util.List;
  *
  * @author Dmitriy Grigoriev
  */
-public class Page<T> {
+public class ListNewsPage {
+
     @SerializedName("results")
-    public List<T> results;
+    public List<SimpleNews> results;
 }

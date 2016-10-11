@@ -1,4 +1,4 @@
-package com.dimanych.guardiannews.model;
+package com.dimanych.guardiannews.model.api;
 
 import android.support.annotation.Nullable;
 

@@ -1,4 +1,4 @@
-package com.dimanych.guardiannews.model;
+package com.dimanych.guardiannews.model.api;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -7,7 +7,8 @@ import com.google.gson.annotations.SerializedName;
  *
  * @author Dmitriy Grigoriev
  */
-public class ResponseSingle {
+public class ResponseResults<T> {
+
     @SerializedName("response")
-    public Content response;
+    public T response;
 }
