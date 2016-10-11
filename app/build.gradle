@@ -55,6 +55,8 @@ dependencies {
     //IMAGE
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'jp.wasabeef:glide-transformations:2.0.1'
+    //HTML UTIL
+    compile 'org.jsoup:jsoup:1.9.2'
     //TEST
     testCompile 'junit:junit:4.12'
 }

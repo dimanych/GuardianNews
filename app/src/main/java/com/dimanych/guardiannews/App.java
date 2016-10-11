@@ -15,10 +15,13 @@ import com.dimanych.guardiannews.di.DaggerAppComponent;
 public class App extends Application {
 
     private AppComponent appComponent;
+    private static App instance;
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        instance = this;
 
         appComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
@@ -29,5 +32,9 @@ public class App extends Application {
 
     public AppComponent getAppComponent() {
         return appComponent;
+    }
+
+    public static App getInstance() {
+        return instance;
     }
 }

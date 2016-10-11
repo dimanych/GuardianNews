@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">GuardianNews</string>
+  <string name="app_name">theguardian</string>
   <string name="loading">Loading</string>
   <string name="section">Section</string>
   <string name="date">Date</string>

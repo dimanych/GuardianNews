@@ -2,6 +2,8 @@ package com.dimanych.guardiannews.di;
 
 import com.dimanych.guardiannews.ui.newslist.NewsListActivity;
 import com.dimanych.guardiannews.ui.singlenews.NewsActivity;
+import com.dimanych.guardiannews.ui.view.ImgView;
+import com.dimanych.guardiannews.ui.view.ArticleView;
 
 import javax.inject.Singleton;
 
@@ -19,4 +21,8 @@ public interface AppComponent {
     void inject(NewsListActivity newsListActivity);
 
     void inject(NewsActivity newsActivity);
+
+    void inject(ArticleView articleView);
+
+    void inject(ImgView articleImageView);
 }

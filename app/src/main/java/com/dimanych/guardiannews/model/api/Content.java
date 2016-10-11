@@ -1,5 +1,7 @@
 package com.dimanych.guardiannews.model.api;
 
+import android.support.annotation.Nullable;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
@@ -28,4 +30,8 @@ public class Content {
 
     @SerializedName("webUrl")
     public String webUrl;
+
+    @Nullable
+    @SerializedName("fields")
+    public Field field;
 }

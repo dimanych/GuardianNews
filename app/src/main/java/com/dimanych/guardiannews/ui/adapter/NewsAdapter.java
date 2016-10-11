@@ -22,6 +22,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Observable;
 
+import static com.dimanych.guardiannews.util.Constants.EMPTY;
+
 /**
  * <p></p>
  *
@@ -89,7 +91,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
             if (Objects.nonNull(Optional.ofNullable(news)
                     .map(someNews -> someNews.field)
                     .map(field -> field.thumbnail)
-                    .orElse(null)))
+                    .orElse(EMPTY)))
             {
                 Observable.just(news.field.thumbnail)
                         .subscribe(url -> imageLoader.loadImage(url, thumbView), Throwable::printStackTrace);

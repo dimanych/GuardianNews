@@ -17,5 +17,21 @@ public class Field implements Serializable {
     @SerializedName("thumbnail")
     public String thumbnail;
 
+    @Nullable
+    @SerializedName("body")
+    public String body;
+
+    @Nullable
+    @SerializedName("bodyText")
+    public String bodyText;
+
+    @Nullable
+    @SerializedName("byline")
+    public String byline;
+
+    @Nullable
+    @SerializedName("charCount")
+    public String charCount;
+
 
 }
