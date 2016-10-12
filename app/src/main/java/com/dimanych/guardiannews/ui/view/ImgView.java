@@ -1,6 +1,7 @@
 package com.dimanych.guardiannews.ui.view;
 
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -60,11 +61,20 @@ public class ImgView extends LinearLayout {
                 (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.img_view, this, true);
         ButterKnife.bind(this);
-
     }
 
     public void setData(String url, String alt) {
         imageLoader.loadImage(url, imageView);
         altView.setText(alt);
+        imageView.setOnClickListener(v -> showImageFullscreen(url));
+    }
+
+    private void showImageFullscreen(String url) {
+        Dialog dialog = new Dialog(getContext(), android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+        ImageView iView = new ImageView(getContext());
+        imageLoader.loadImage(url, iView);
+        dialog.setContentView(iView);
+        iView.setOnClickListener(v1 -> dialog.dismiss());
+        dialog.show();
     }
 }

@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.singlenews.NewsActivity">
+        <activity android:name=".ui.singlenews.NewsActivity"
+            android:parentActivityName=".ui.newslist.NewsListActivity">
         </activity>
 
     </application>

@@ -3,18 +3,22 @@ package com.dimanych.guardiannews.ui.view;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.RelativeSizeSpan;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dimanych.guardiannews.App;
-import com.dimanych.guardiannews.R;
 import com.dimanych.guardiannews.util.helper.ImageLoader;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter;
+import org.sufficientlysecure.htmltextview.HtmlTextView;
 
 import javax.inject.Inject;
 
@@ -57,12 +61,24 @@ public class ArticleView extends LinearLayout {
     public void setBody(String body) {
         Document document = Jsoup.parse(body);
         Elements elements = document.select("body *");
+        makeCapital(createTextView(elements.first()), elements.first().text());
+        elements.remove(0);
         for (Element element : elements) {
             switch (element.tag().getName()) {
                 case "p":
-                    TextView textView = new TextView(getContext());
-                    textView.setText(element.text());
-                    addView(textView);
+                case "em":
+                case "br":
+                case "blockquote":
+                    createTextView(element);
+                    break;
+                case "h1":
+                case "h2":
+                case "h3":
+                case "h4":
+                    HtmlTextView headTextView = new HtmlTextView(getContext());
+                    headTextView.setHtml(element.toString(), new HtmlHttpImageGetter(headTextView));
+                    headTextView.setPadding(0,30,0,30);
+                    addView(headTextView);
                     break;
                 case "img":
                     ImgView imgView = new ImgView(getContext());
@@ -73,15 +89,22 @@ public class ArticleView extends LinearLayout {
         }
     }
 
-    private void setCapital(String body) {
-        TextView capitalView = new TextView(getContext());
-        capitalView.setText(String.valueOf(body.charAt(3)));
-        if (Build.VERSION.SDK_INT < 23) {
-            capitalView.setTextAppearance(getContext(), R.style.CapitalTextTheme);
-        } else{
-            capitalView.setTextAppearance(R.style.CapitalTextTheme);
+    private TextView createTextView(Element element) {
+        HtmlTextView textView = new HtmlTextView(getContext());
+        try {
+            textView.setHtml(element.toString(), new HtmlHttpImageGetter(textView));
+        } catch (IndexOutOfBoundsException e) {
+            textView.setText(element.text());
         }
-        addView(capitalView);
+        addView(textView);
+        return textView;
+    }
+
+    private void makeCapital(TextView textView, String title) {
+        final SpannableString spannableString = new SpannableString(title);
+        int position = 0;
+        spannableString.setSpan(new RelativeSizeSpan(2.0f), position, position + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textView.setText(spannableString, TextView.BufferType.SPANNABLE);
     }
 
 }

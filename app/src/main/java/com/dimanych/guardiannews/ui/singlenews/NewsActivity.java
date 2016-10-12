@@ -24,7 +24,7 @@ import butterknife.BindView;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static com.dimanych.guardiannews.util.Constants.EMPTY;
-
+//@TODO migrate to fragment
 public class NewsActivity extends BaseActivity implements INewsView {
 
     @BindView(R.id.news_title)
@@ -52,6 +52,7 @@ public class NewsActivity extends BaseActivity implements INewsView {
         super.onCreate(savedInstanceState);
         ((App) getApplication()).getAppComponent().inject(this);
         setContentView(R.layout.activity_news);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         presenter.setView(this);
         SimpleNews news = getIntent().getParcelableExtra(Constants.NEWS);
