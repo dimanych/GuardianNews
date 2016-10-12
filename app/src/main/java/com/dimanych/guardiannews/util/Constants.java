@@ -47,6 +47,14 @@ public abstract class Constants {
     public static final String ENVIRONMENT = "environment";
     public static final String TECHNOLOGY = "technology";
     public static final String TRAVEL = "travel";
+    public static final String SCIENCE = "science";
+    public static final String MEDIA = "media";
+    public static final String FILM = "film";
+    public static final String MUSIC = "music";
+
+    public static final String[] sections = {
+            WORLD, SPORT, CULTURE, BUSINESS, LIFEANDSTYLE, FASHION, ENVIRONMENT, TECHNOLOGY, TRAVEL,
+            SCIENCE, MEDIA, FILM, MUSIC};
     /**
      * API key
      */

@@ -19,7 +19,7 @@
 
         <TextView
             android:id="@+id/news_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/brightTurquoise"
             android:padding="@dimen/activity_horizontal_margin"
@@ -61,8 +61,9 @@
                 android:id="@+id/news_author"
                 android:textColor="@color/nobel"
                 android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="@dimen/author_width"
+                android:layout_height="wrap_content"
+                android:gravity="right"/>
         </RelativeLayout>
 
         <com.dimanych.guardiannews.ui.view.ArticleView

@@ -10,15 +10,7 @@ import com.dimanych.guardiannews.ui.adapter.CustomPageAdapter;
 
 import butterknife.BindView;
 
-import static com.dimanych.guardiannews.util.Constants.BUSINESS;
-import static com.dimanych.guardiannews.util.Constants.CULTURE;
-import static com.dimanych.guardiannews.util.Constants.ENVIRONMENT;
-import static com.dimanych.guardiannews.util.Constants.FASHION;
-import static com.dimanych.guardiannews.util.Constants.LIFEANDSTYLE;
-import static com.dimanych.guardiannews.util.Constants.SPORT;
-import static com.dimanych.guardiannews.util.Constants.TECHNOLOGY;
-import static com.dimanych.guardiannews.util.Constants.TRAVEL;
-import static com.dimanych.guardiannews.util.Constants.WORLD;
+import static com.dimanych.guardiannews.util.Constants.sections;
 
 public class NewsListActivity extends BaseActivity {
 
@@ -35,15 +27,9 @@ public class NewsListActivity extends BaseActivity {
     }
 
     private void initUI() {
-        tabLayout.addTab(tabLayout.newTab().setText(WORLD));
-        tabLayout.addTab(tabLayout.newTab().setText(SPORT));
-        tabLayout.addTab(tabLayout.newTab().setText(CULTURE));
-        tabLayout.addTab(tabLayout.newTab().setText(BUSINESS));
-        tabLayout.addTab(tabLayout.newTab().setText(LIFEANDSTYLE));
-        tabLayout.addTab(tabLayout.newTab().setText(FASHION));
-        tabLayout.addTab(tabLayout.newTab().setText(ENVIRONMENT));
-        tabLayout.addTab(tabLayout.newTab().setText(TECHNOLOGY));
-        tabLayout.addTab(tabLayout.newTab().setText(TRAVEL));
+        for (String section : sections) {
+            tabLayout.addTab(tabLayout.newTab().setText(section));
+        }
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
