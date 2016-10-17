@@ -15,7 +15,7 @@ import static com.dimanych.guardiannews.util.Constants.API_KEY_VALUE;
  *
  * @author Dmitriy Grigoriev
  */
-public class NewsPresenter extends BasePresenter<NewsActivity> {
+public class NewsPresenter extends BasePresenter<NewsFragment> {
 
     NewsApi newsApi;
 

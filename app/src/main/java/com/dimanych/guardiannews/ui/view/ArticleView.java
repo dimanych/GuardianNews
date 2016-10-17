@@ -85,6 +85,11 @@ public class ArticleView extends LinearLayout {
                     imgView.setData(element.attr("src"), element.attr("alt"));
                     addView(imgView);
                     break;
+//                case "iframe":
+//                    WebView webView = new WebView(getContext());
+//                    addView(webView);
+//                    webView.loadUrl(element.attr("src"));
+//                    break;
             }
         }
     }

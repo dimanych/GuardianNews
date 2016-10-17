@@ -1,6 +1,5 @@
 package com.dimanych.guardiannews.ui.newslist;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,7 +15,7 @@ import com.dimanych.guardiannews.R;
 import com.dimanych.guardiannews.model.api.SimpleNews;
 import com.dimanych.guardiannews.ui.BaseFragment;
 import com.dimanych.guardiannews.ui.adapter.NewsAdapter;
-import com.dimanych.guardiannews.ui.singlenews.NewsActivity;
+import com.dimanych.guardiannews.ui.singlenews.NewsFragment;
 import com.dimanych.guardiannews.util.helper.ImageLoader;
 
 import java.util.List;
@@ -95,8 +94,10 @@ public class SectionFragment extends BaseFragment implements INewsListView, News
 
     @Override
     public void onItemClick(SimpleNews news) {
-        Intent intent = new Intent(getContext(), NewsActivity.class);
-        intent.putExtra(NEWS, news);
-        startActivity(intent);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(NEWS, news);
+        NewsFragment fragment = new NewsFragment();
+        fragment.setArguments(bundle);
+        getFragmentManager().beginTransaction().add(R.id.fragment_container, fragment).commit();
     }
 }

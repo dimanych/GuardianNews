@@ -1,29 +1,27 @@
 package com.dimanych.guardiannews.util;
 
 /**
- * <p>Константы</p>
+ * <p></p>
  *
  * @author Dmitriy Grigoriev
  */
 public abstract class Constants {
     /**
-     * Системные сообщения
-     */
-    public static final String NOT_YET_IMPLEMENTED = "Пока не реализовано";
-    public static final String LOADING_FAILED = "Не удалось загрузить";
-    /**
-     * Ссылки
+     * Host
      */
     public static final String API_HOST = "https://content.guardianapis.com/";
-    public static final String URL = "http://content.guardianapis.com/search?section=world&api-key=403e2fc8-136e-450b-b2a4-623faad17e0b&show-fields=thumbnail";
     /**
-     * Теги-фильтры для запроса к API
+     * API key
+     */
+    public static final String API_KEY_VALUE = "403e2fc8-136e-450b-b2a4-623faad17e0b";
+    /**
+     * Tags-filters for requesting to API
      */
     public static final String CONTENT = "content";
     public static final String SECTION = "section";
     public static final String SEARCH = "search";
     /**
-     * Теги-парсеры
+     * Tags fields
      */
     public static final String API_KEY = "api-key";
     public static final String SHOW_FIELDS = "show-fields";
@@ -36,7 +34,7 @@ public abstract class Constants {
     public static final String API_LINK = "apiLink";
     public static final String WEB_PUBLICATION_DATE = "webPublicationDate";
     /**
-     * Sections
+     * News Sections
      */
     public static final String WORLD = "world";
     public static final String SPORT = "sport";
@@ -51,14 +49,9 @@ public abstract class Constants {
     public static final String MEDIA = "media";
     public static final String FILM = "film";
     public static final String MUSIC = "music";
-
     public static final String[] sections = {
             WORLD, SPORT, CULTURE, BUSINESS, LIFEANDSTYLE, FASHION, ENVIRONMENT, TECHNOLOGY, TRAVEL,
             SCIENCE, MEDIA, FILM, MUSIC};
-    /**
-     * API key
-     */
-    public static final String API_KEY_VALUE = "403e2fc8-136e-450b-b2a4-623faad17e0b";
     /**
      *
      */

@@ -1,7 +1,11 @@
 package com.dimanych.guardiannews.ui.singlenews;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.text.Html;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -11,7 +15,7 @@ import com.dimanych.guardiannews.App;
 import com.dimanych.guardiannews.R;
 import com.dimanych.guardiannews.model.api.Content;
 import com.dimanych.guardiannews.model.api.SimpleNews;
-import com.dimanych.guardiannews.ui.BaseActivity;
+import com.dimanych.guardiannews.ui.BaseFragment;
 import com.dimanych.guardiannews.ui.view.ArticleView;
 import com.dimanych.guardiannews.util.Constants;
 import com.dimanych.guardiannews.util.CustomDateUtils;
@@ -24,8 +28,13 @@ import butterknife.BindView;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static com.dimanych.guardiannews.util.Constants.EMPTY;
-//@TODO migrate to fragment
-public class NewsActivity extends BaseActivity implements INewsView {
+
+/**
+ * <p></p>
+ *
+ * @author Dmitriy Grigoriev
+ */
+public class NewsFragment extends BaseFragment implements INewsView {
 
     @BindView(R.id.news_title)
     TextView newsTitle;
@@ -48,22 +57,28 @@ public class NewsActivity extends BaseActivity implements INewsView {
     ImageLoader imageLoader;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ((App) getApplication()).getAppComponent().inject(this);
-        setContentView(R.layout.activity_news);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_news, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ((App) getActivity().getApplication()).getAppComponent().inject(this);
 
         presenter.setView(this);
-        SimpleNews news = getIntent().getParcelableExtra(Constants.NEWS);
+
+        SimpleNews news = getArguments().getParcelable(Constants.NEWS);
         newsTitle.setText(news.webTitle);
         imageLoader.loadImage(news.field.thumbnail, thumbnailView);
+
         loadingBar.setVisibility(VISIBLE);
         presenter.loadSingleNews(news.id);
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         presenter.unSubscribeAll();
     }
