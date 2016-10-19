@@ -1,8 +1,7 @@
 package com.dimanych.guardiannews.di;
 
-import com.dimanych.guardiannews.ui.MainActivity;
-import com.dimanych.guardiannews.ui.newslist.SectionFragment;
-import com.dimanych.guardiannews.ui.singlenews.NewsFragment;
+import com.dimanych.guardiannews.di.activity.ActivityComponent;
+import com.dimanych.guardiannews.di.activity.ActivityModule;
 import com.dimanych.guardiannews.ui.view.ArticleView;
 import com.dimanych.guardiannews.ui.view.ImgView;
 
@@ -19,13 +18,10 @@ import dagger.Component;
 @Component(modules = {AppModule.class, ApiModule.class})
 public interface AppComponent {
 
-    void inject(MainActivity mainActivity);
+    ActivityComponent plus(ActivityModule activityModule);
 
     void inject(ArticleView articleView);
 
     void inject(ImgView articleImageView);
 
-    void inject(SectionFragment sectionFragment);
-
-    void inject(NewsFragment newsFragment);
 }

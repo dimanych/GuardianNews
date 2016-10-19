@@ -10,7 +10,9 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.annimon.stream.Stream;
 import com.dimanych.guardiannews.App;
+import com.dimanych.guardiannews.util.StringUtils;
 import com.dimanych.guardiannews.util.helper.ImageLoader;
 
 import org.jsoup.Jsoup;
@@ -61,7 +63,7 @@ public class ArticleView extends LinearLayout {
     public void setBody(String body) {
         Document document = Jsoup.parse(body);
         Elements elements = document.select("body *");
-        makeCapital(createTextView(elements.first()), elements.first().text());
+        makeCapital(createTextView(getFirstLine(elements)), elements.first().text());
         elements.remove(0);
         for (Element element : elements) {
             switch (element.tag().getName()) {
@@ -92,6 +94,15 @@ public class ArticleView extends LinearLayout {
 //                    break;
             }
         }
+    }
+
+    private Element getFirstLine(Elements elements) {
+        Element element = Stream.of(elements)
+                .filter(elem -> StringUtils.isEmpty(elem.text()))
+                .findFirst()
+                .orElse(null);
+        elements.remove(element);
+        return element;
     }
 
     private TextView createTextView(Element element) {

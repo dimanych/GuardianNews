@@ -11,11 +11,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.annimon.stream.Optional;
-import com.dimanych.guardiannews.App;
 import com.dimanych.guardiannews.R;
 import com.dimanych.guardiannews.model.api.Content;
 import com.dimanych.guardiannews.model.api.SimpleNews;
 import com.dimanych.guardiannews.ui.BaseFragment;
+import com.dimanych.guardiannews.ui.MainActivity;
 import com.dimanych.guardiannews.ui.view.ArticleView;
 import com.dimanych.guardiannews.util.Constants;
 import com.dimanych.guardiannews.util.CustomDateUtils;
@@ -65,7 +65,7 @@ public class NewsFragment extends BaseFragment implements INewsView {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ((App) getActivity().getApplication()).getAppComponent().inject(this);
+        ((MainActivity) getActivity()).getActivityComponent().inject(this);
 
         presenter.setView(this);
 

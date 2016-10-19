@@ -10,7 +10,11 @@ import android.view.ViewGroup;
 
 import com.dimanych.guardiannews.R;
 import com.dimanych.guardiannews.ui.BaseFragment;
+import com.dimanych.guardiannews.ui.MainActivity;
 import com.dimanych.guardiannews.ui.adapter.CustomPageAdapter;
+import com.dimanych.guardiannews.util.helper.NavigationHelper;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 
@@ -28,6 +32,9 @@ public class NewsListFragment extends BaseFragment {
     @BindView(R.id.pager)
     ViewPager viewPager;
 
+    @Inject
+    NavigationHelper navigationHelper;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +44,7 @@ public class NewsListFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ((MainActivity) getActivity()).getActivityComponent().inject(this);
         initUI();
     }
 

@@ -10,13 +10,14 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.dimanych.guardiannews.App;
 import com.dimanych.guardiannews.R;
 import com.dimanych.guardiannews.model.api.SimpleNews;
 import com.dimanych.guardiannews.ui.BaseFragment;
+import com.dimanych.guardiannews.ui.MainActivity;
 import com.dimanych.guardiannews.ui.adapter.NewsAdapter;
 import com.dimanych.guardiannews.ui.singlenews.NewsFragment;
 import com.dimanych.guardiannews.util.helper.ImageLoader;
+import com.dimanych.guardiannews.util.helper.NavigationHelper;
 
 import java.util.List;
 
@@ -48,6 +49,8 @@ public class SectionFragment extends BaseFragment implements INewsListView, News
     NewsListPresenter presenter;
     @Inject
     ImageLoader imageLoader;
+    @Inject
+    NavigationHelper navigationHelper;
 
     @Nullable
     @Override
@@ -58,7 +61,7 @@ public class SectionFragment extends BaseFragment implements INewsListView, News
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        App.getInstance().getAppComponent().inject(this);
+        ((MainActivity) getActivity()).getActivityComponent().inject(this);
         presenter.setView(this);
         initUI();
         presenter.loadNews(section);
@@ -98,6 +101,6 @@ public class SectionFragment extends BaseFragment implements INewsListView, News
         bundle.putParcelable(NEWS, news);
         NewsFragment fragment = new NewsFragment();
         fragment.setArguments(bundle);
-        getFragmentManager().beginTransaction().add(R.id.fragment_container, fragment).commit();
+        navigationHelper.addFragment(fragment);
     }
 }
