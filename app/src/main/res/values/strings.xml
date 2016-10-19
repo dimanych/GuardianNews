@@ -1,9 +1,7 @@
 <resources>
-    <string name="app_name">theguardian</string>
+    <string name="app_name">TheGuardian</string>
     <string name="loading">Loading</string>
     <string name="section">Section</string>
     <string name="date">Date</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

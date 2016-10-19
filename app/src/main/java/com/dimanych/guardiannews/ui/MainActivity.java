@@ -10,6 +10,8 @@ import com.dimanych.guardiannews.util.helper.NavigationHelper;
 
 import javax.inject.Inject;
 
+import static com.dimanych.guardiannews.util.Constants.TAG_NEWS_LIST_FRAGMENT;
+
 public class MainActivity extends BaseActivity {
 
     @Inject
@@ -19,7 +21,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        navigationHelper.addFragment(new NewsListFragment());
+        navigationHelper.addFragment(new NewsListFragment(), TAG_NEWS_LIST_FRAGMENT);
     }
 
     @Override

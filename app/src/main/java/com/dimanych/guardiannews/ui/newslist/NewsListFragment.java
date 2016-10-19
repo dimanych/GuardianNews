@@ -55,7 +55,7 @@ public class NewsListFragment extends BaseFragment {
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
-        final CustomPageAdapter adapter = new CustomPageAdapter(getFragmentManager(), tabLayout.getTabCount());
+        final CustomPageAdapter adapter = new CustomPageAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

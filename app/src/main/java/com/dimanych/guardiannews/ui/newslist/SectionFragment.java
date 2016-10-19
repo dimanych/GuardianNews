@@ -29,6 +29,7 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static com.dimanych.guardiannews.util.Constants.NEWS;
 import static com.dimanych.guardiannews.util.Constants.SECTION;
+import static com.dimanych.guardiannews.util.Constants.TAG_NEWS_FRAGMENT;
 
 /**
  * <p></p>
@@ -73,7 +74,6 @@ public class SectionFragment extends BaseFragment implements INewsListView, News
         newsRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         newsRecycler.setAdapter(newsAdapter);
         loading.setVisibility(VISIBLE);
-
     }
 
 
@@ -101,6 +101,6 @@ public class SectionFragment extends BaseFragment implements INewsListView, News
         bundle.putParcelable(NEWS, news);
         NewsFragment fragment = new NewsFragment();
         fragment.setArguments(bundle);
-        navigationHelper.addFragment(fragment);
+        navigationHelper.addFragment(fragment, TAG_NEWS_FRAGMENT);
     }
 }

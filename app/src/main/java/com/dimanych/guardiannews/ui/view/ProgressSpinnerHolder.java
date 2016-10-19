@@ -1,4 +1,4 @@
-package com.dimanych.guardiannews.ui;
+package com.dimanych.guardiannews.ui.view;
 
 import android.app.ProgressDialog;
 import android.content.Context;

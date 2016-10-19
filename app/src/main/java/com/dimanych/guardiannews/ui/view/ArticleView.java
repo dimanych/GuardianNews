@@ -98,9 +98,11 @@ public class ArticleView extends LinearLayout {
 
     private Element getFirstLine(Elements elements) {
         Element element = Stream.of(elements)
-                .filter(elem -> StringUtils.isEmpty(elem.text()))
                 .findFirst()
-                .orElse(null);
+                .filter(elem -> StringUtils.isEmpty(elem.text()))
+                .stream()
+                .findFirst()
+                .orElse(elements.first());
         elements.remove(element);
         return element;
     }

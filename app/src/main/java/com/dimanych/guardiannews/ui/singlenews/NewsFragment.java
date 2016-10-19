@@ -17,9 +17,11 @@ import com.dimanych.guardiannews.model.api.SimpleNews;
 import com.dimanych.guardiannews.ui.BaseFragment;
 import com.dimanych.guardiannews.ui.MainActivity;
 import com.dimanych.guardiannews.ui.view.ArticleView;
+import com.dimanych.guardiannews.ui.view.CustomToolbar;
 import com.dimanych.guardiannews.util.Constants;
 import com.dimanych.guardiannews.util.CustomDateUtils;
 import com.dimanych.guardiannews.util.helper.ImageLoader;
+import com.dimanych.guardiannews.util.helper.NavigationHelper;
 
 import javax.inject.Inject;
 
@@ -34,8 +36,10 @@ import static com.dimanych.guardiannews.util.Constants.EMPTY;
  *
  * @author Dmitriy Grigoriev
  */
-public class NewsFragment extends BaseFragment implements INewsView {
+public class NewsFragment extends BaseFragment implements INewsView, CustomToolbar.LeftClickListener {
 
+    @BindView(R.id.news_toolbar)
+    CustomToolbar toolbar;
     @BindView(R.id.news_title)
     TextView newsTitle;
     @BindView(R.id.thumbnail)
@@ -55,6 +59,8 @@ public class NewsFragment extends BaseFragment implements INewsView {
     NewsPresenter presenter;
     @Inject
     ImageLoader imageLoader;
+    @Inject
+    NavigationHelper navigationHelper;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,6 +74,7 @@ public class NewsFragment extends BaseFragment implements INewsView {
         ((MainActivity) getActivity()).getActivityComponent().inject(this);
 
         presenter.setView(this);
+        toolbar.setLeftClickListener(this);
 
         SimpleNews news = getArguments().getParcelable(Constants.NEWS);
         newsTitle.setText(news.webTitle);
@@ -99,5 +106,10 @@ public class NewsFragment extends BaseFragment implements INewsView {
                 .map(field -> field.trailText)
                 .orElse(EMPTY)));
         loadingBar.setVisibility(GONE);
+    }
+
+    @Override
+    public void onLeftClicked() {
+        navigationHelper.backStack();
     }
 }

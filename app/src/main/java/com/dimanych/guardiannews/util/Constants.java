@@ -52,6 +52,8 @@ public abstract class Constants {
     public static final String[] sections = {
             WORLD, SPORT, CULTURE, BUSINESS, LIFEANDSTYLE, FASHION, ENVIRONMENT, TECHNOLOGY, TRAVEL,
             SCIENCE, MEDIA, FILM, MUSIC};
+    public static String TAG_NEWS_LIST_FRAGMENT = "NewsListFragment";
+    public static String TAG_NEWS_FRAGMENT = "NewsFragment";
     /**
      *
      */

@@ -17,10 +17,15 @@ public class NavigationHelper {
         this.activity = activity;
     }
 
-    public void addFragment(BaseFragment fragment) {
+    public void addFragment(BaseFragment fragment, String tag) {
         activity.getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.fragment_container, fragment)
+                .addToBackStack(tag)
                 .commit();
+    }
+
+    public void backStack() {
+        activity.getSupportFragmentManager().popBackStack();
     }
 }
