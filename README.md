@@ -1,6 +1,6 @@
 # GuardianNews
 
-App uses [Open theguardian platform](http://open-platform.theguardiancomfd/)
+App uses [Open theguardian platform](http://open-platform.theguardian.com//)
 
 ![alt text](img/news_list.png "")
 
