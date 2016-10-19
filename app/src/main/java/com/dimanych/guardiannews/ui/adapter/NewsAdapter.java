@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.annimon.stream.Optional;
 import com.dimanych.guardiannews.R;
 import com.dimanych.guardiannews.model.api.SimpleNews;
 import com.dimanych.guardiannews.util.CustomDateUtils;
@@ -22,8 +21,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Observable;
 
-import static com.dimanych.guardiannews.util.Constants.EMPTY;
-
 /**
  * <p></p>
  *
@@ -33,11 +30,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
 
     ImageLoader imageLoader;
     private ItemListener listener;
+    private int page = 2;
 
     private List<SimpleNews> newsList = new ArrayList<>();
 
     public interface ItemListener {
         void onItemClick(SimpleNews news);
+        void onSwipedEnd(int nextPage);
     }
 
     public NewsAdapter(ImageLoader imageLoader, ItemListener listener) {
@@ -54,6 +53,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
     @Override
     public void onBindViewHolder(NewsHolder holder, int position) {
         holder.setNews(newsList.get(position));
+
+        if (position >= getItemCount() - 1) {
+            listener.onSwipedEnd(page++);
+        }
     }
 
     @Override
@@ -88,14 +91,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
             String webPublicationDateStr = CustomDateUtils.convertDateToStr(news.webPublicationDate);
             webPublicationDate.setText(webPublicationDateStr);
 
-            if (Objects.nonNull(Optional.ofNullable(news)
-                    .map(someNews -> someNews.field)
+            Observable.just(news)
+                    .map(simpleNews -> simpleNews.field)
+                    .filter(Objects::nonNull)
                     .map(field -> field.thumbnail)
-                    .orElse(EMPTY)))
-            {
-                Observable.just(news.field.thumbnail)
-                        .subscribe(url -> imageLoader.loadImage(url, thumbView), Throwable::printStackTrace);
-            }
+                    .subscribe(url -> imageLoader.loadImage(url, thumbView), Throwable::printStackTrace);
         }
 
         @OnClick(R.id.news_item)
@@ -105,7 +105,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
     }
 
     public void update(List<SimpleNews> results) {
-        this.newsList.clear();
         this.newsList.addAll(results);
         notifyDataSetChanged();
     }

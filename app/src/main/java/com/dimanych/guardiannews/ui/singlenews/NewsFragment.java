@@ -1,5 +1,6 @@
 package com.dimanych.guardiannews.ui.singlenews;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Html;
@@ -29,6 +30,7 @@ import butterknife.BindView;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static com.annimon.stream.Optional.ofNullable;
 import static com.dimanych.guardiannews.util.Constants.EMPTY;
 
 /**
@@ -36,7 +38,11 @@ import static com.dimanych.guardiannews.util.Constants.EMPTY;
  *
  * @author Dmitriy Grigoriev
  */
-public class NewsFragment extends BaseFragment implements INewsView, CustomToolbar.LeftClickListener {
+public class NewsFragment extends BaseFragment implements INewsView,
+        CustomToolbar.LeftClickListener, CustomToolbar.RightClickListener
+{
+
+    private String plainTextBody;
 
     @BindView(R.id.news_toolbar)
     CustomToolbar toolbar;
@@ -75,6 +81,7 @@ public class NewsFragment extends BaseFragment implements INewsView, CustomToolb
 
         presenter.setView(this);
         toolbar.setLeftClickListener(this);
+        toolbar.setRightClickListener(this);
 
         SimpleNews news = getArguments().getParcelable(Constants.NEWS);
         newsTitle.setText(news.webTitle);
@@ -92,24 +99,36 @@ public class NewsFragment extends BaseFragment implements INewsView, CustomToolb
 
     @Override
     public void loadSingleNews(Content news) {
-        newsAuthor.setText(Optional.ofNullable(news)
+        newsAuthor.setText(ofNullable(news)
                 .map(n -> n.field)
                 .map(field -> field.byline)
                 .orElse(EMPTY));
         newsCreated.setText(CustomDateUtils.convertDateToStr(news.webPublicationDate));
+        loadingBar.setVisibility(GONE);
         newsArticle.setBody(Optional.ofNullable(news)
                 .map(n -> n.field)
-                .map(field -> field.body)
-                .orElse(EMPTY));
+                .orElse(null));
         newsTrail.setText(Html.fromHtml(Optional.ofNullable(news)
                 .map(n -> n.field)
                 .map(field -> field.trailText)
                 .orElse(EMPTY)));
-        loadingBar.setVisibility(GONE);
+        plainTextBody = Optional.ofNullable(news)
+                .map(n -> n.field)
+                .map(field -> field.bodyText)
+                .orElse(EMPTY);
     }
 
     @Override
     public void onLeftClicked() {
         navigationHelper.backStack();
+    }
+
+    @Override
+    public void onRightClicked() {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, plainTextBody);
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
     }
 }

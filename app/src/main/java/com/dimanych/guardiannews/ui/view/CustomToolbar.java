@@ -73,7 +73,7 @@ public class CustomToolbar extends Toolbar {
         try {
             leftBtnResId = attr.getDrawable(R.styleable.CustomToolbar_left_button_icon);
             rightBtnResId = attr.getDrawable(R.styleable.CustomToolbar_right_button_icon);
-            hideLeftBtn = attr.getBoolean(R.styleable.CustomToolbar_hide_left_button, true);
+            hideLeftBtn = attr.getBoolean(R.styleable.CustomToolbar_hide_left_button, false);
             title = attr.getString(R.styleable.CustomToolbar_toolbar_title);
         } finally {
             attr.recycle();

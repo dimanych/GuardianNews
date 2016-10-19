@@ -65,7 +65,7 @@ public class SectionFragment extends BaseFragment implements INewsListView, News
         ((MainActivity) getActivity()).getActivityComponent().inject(this);
         presenter.setView(this);
         initUI();
-        presenter.loadNews(section);
+        presenter.loadNews(section, 1);
     }
 
     private void initUI() {
@@ -102,5 +102,11 @@ public class SectionFragment extends BaseFragment implements INewsListView, News
         NewsFragment fragment = new NewsFragment();
         fragment.setArguments(bundle);
         navigationHelper.addFragment(fragment, TAG_NEWS_FRAGMENT);
+    }
+
+    @Override
+    public void onSwipedEnd(int nextPage) {
+        loading.setVisibility(VISIBLE);
+        presenter.loadNews(section, nextPage);
     }
 }

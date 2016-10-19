@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.annimon.stream.Stream;
 import com.dimanych.guardiannews.App;
+import com.dimanych.guardiannews.model.api.Field;
 import com.dimanych.guardiannews.util.StringUtils;
 import com.dimanych.guardiannews.util.helper.ImageLoader;
 
@@ -60,39 +61,41 @@ public class ArticleView extends LinearLayout {
         setOrientation(VERTICAL);
     }
 
-    public void setBody(String body) {
-        Document document = Jsoup.parse(body);
-        Elements elements = document.select("body *");
-        makeCapital(createTextView(getFirstLine(elements)), elements.first().text());
-        elements.remove(0);
-        for (Element element : elements) {
-            switch (element.tag().getName()) {
-                case "p":
-                case "em":
-                case "br":
-                case "blockquote":
-                    createTextView(element);
-                    break;
-                case "h1":
-                case "h2":
-                case "h3":
-                case "h4":
-                    HtmlTextView headTextView = new HtmlTextView(getContext());
-                    headTextView.setHtml(element.toString(), new HtmlHttpImageGetter(headTextView));
-                    headTextView.setPadding(0,30,0,30);
-                    addView(headTextView);
-                    break;
-                case "img":
-                    ImgView imgView = new ImgView(getContext());
-                    imgView.setData(element.attr("src"), element.attr("alt"));
-                    addView(imgView);
-                    break;
-//                case "iframe":
-//                    WebView webView = new WebView(getContext());
-//                    addView(webView);
-//                    webView.loadUrl(element.attr("src"));
-//                    break;
+    public void setBody(Field field) {
+        try {
+            Document document = Jsoup.parse(field.body);
+            Elements elements = document.select("body *");
+            makeCapital(createTextView(getFirstLine(elements)), elements.first().text());
+            elements.remove(0);
+            for (Element element : elements) {
+                switch (element.tag().getName()) {
+                    case "p":
+                    case "em":
+                    case "br":
+                    case "blockquote":
+                        createTextView(element);
+                        break;
+                    case "h1":
+                    case "h2":
+                    case "h3":
+                    case "h4":
+                        HtmlTextView headTextView = new HtmlTextView(getContext());
+                        headTextView.setHtml(element.toString(), new HtmlHttpImageGetter(headTextView));
+                        headTextView.setPadding(0,30,0,30);
+                        addView(headTextView);
+                        break;
+                    case "img":
+                        ImgView imgView = new ImgView(getContext());
+                        imgView.setData(element.attr("src"), element.attr("alt"));
+                        addView(imgView);
+                        break;
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            TextView textView = new TextView(getContext());
+            textView.setText(field.bodyText);
+            addView(textView);
         }
     }
 

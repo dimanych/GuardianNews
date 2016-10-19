@@ -33,6 +33,7 @@ public abstract class Constants {
     public static final String API_URL = "apiUrl";
     public static final String API_LINK = "apiLink";
     public static final String WEB_PUBLICATION_DATE = "webPublicationDate";
+    public static final String PAGE = "page";
     /**
      * News Sections
      */

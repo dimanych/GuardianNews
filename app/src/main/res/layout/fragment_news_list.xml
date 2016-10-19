@@ -10,7 +10,8 @@
     <com.dimanych.guardiannews.ui.view.CustomToolbar
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
-        app:toolbar_title="@string/app_name"/>
+        app:toolbar_title="@string/app_name"
+        app:left_button_icon="@mipmap/ic_launcher"/>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_layout"

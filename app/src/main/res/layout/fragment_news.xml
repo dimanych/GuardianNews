@@ -20,7 +20,7 @@
                 android:id="@+id/news_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/toolbar_height"
-                app:hide_left_button="false"/>
+                app:right_button_icon="@drawable/ic_share_white_36dp"/>
 
             <ImageView
                 android:id="@+id/thumbnail"

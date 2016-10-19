@@ -11,6 +11,7 @@ import rx.Observable;
 
 import static com.dimanych.guardiannews.util.Constants.API_KEY;
 import static com.dimanych.guardiannews.util.Constants.API_LINK;
+import static com.dimanych.guardiannews.util.Constants.PAGE;
 import static com.dimanych.guardiannews.util.Constants.SEARCH;
 import static com.dimanych.guardiannews.util.Constants.SECTION;
 import static com.dimanych.guardiannews.util.Constants.SHOW_FIELDS;
@@ -29,7 +30,8 @@ public interface NewsApi {
     @GET(SEARCH)
     Observable<ResponseResults<ListNewsPage>> getNewsList(@Query(SECTION) String section,
                                                           @Query(API_KEY) String apiKey,
-                                                          @Query(SHOW_FIELDS) String showFields);
+                                                          @Query(SHOW_FIELDS) String showFields,
+                                                          @Query(PAGE) int pageNumber);
     /**
      * @return news by API link
      */

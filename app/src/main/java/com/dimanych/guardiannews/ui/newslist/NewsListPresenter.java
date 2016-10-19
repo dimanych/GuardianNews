@@ -24,8 +24,8 @@ public class NewsListPresenter extends BasePresenter<SectionFragment> {
         this.newsApi = newsApi;
     }
 
-    public void loadNews(String section) {
-        subscribe(newsApi.getNewsList(section, API_KEY_VALUE, THUMBNAIL)
+    public void loadNews(String section, int pageNumber) {
+        subscribe(newsApi.getNewsList(section, API_KEY_VALUE, THUMBNAIL, pageNumber)
                 .map(response -> response.response)
                 .map(page -> page.results)
                 .observeOn(AndroidSchedulers.mainThread())
