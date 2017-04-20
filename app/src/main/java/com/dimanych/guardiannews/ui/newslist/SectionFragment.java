@@ -3,7 +3,6 @@ package com.dimanych.guardiannews.ui.newslist;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +15,11 @@ import com.dimanych.guardiannews.ui.BaseFragment;
 import com.dimanych.guardiannews.ui.MainActivity;
 import com.dimanych.guardiannews.ui.adapter.NewsAdapter;
 import com.dimanych.guardiannews.ui.singlenews.NewsFragment;
+import com.dimanych.guardiannews.ui.view.ProgressBarView;
 import com.dimanych.guardiannews.util.helper.ImageLoader;
 import com.dimanych.guardiannews.util.helper.NavigationHelper;
+import com.github.ksoichiro.android.observablescrollview.ObservableRecyclerView;
+import com.reginald.swiperefresh.CustomSwipeRefreshLayout;
 
 import java.util.List;
 
@@ -38,20 +40,22 @@ import static com.dimanych.guardiannews.util.Constants.TAG_NEWS_FRAGMENT;
  */
 public class SectionFragment extends BaseFragment implements INewsListView, NewsAdapter.ItemListener {
 
-    private NewsAdapter newsAdapter;
-    private String section;
+    private NewsAdapter mNewsAdapter;
+    private String mSection;
 
     @BindView(R.id.news_recycler_view)
-    RecyclerView newsRecycler;
+    ObservableRecyclerView mNewsRecycler;
+    @BindView(R.id.custom_refresh_layout)
+    CustomSwipeRefreshLayout mRefreshLayout;
     @BindView(R.id.progress_bar)
     ProgressBar loading;
 
     @Inject
-    NewsListPresenter presenter;
+    NewsListPresenter mPresenter;
     @Inject
-    ImageLoader imageLoader;
+    ImageLoader mImageLoader;
     @Inject
-    NavigationHelper navigationHelper;
+    NavigationHelper mNavigationHelper;
 
     @Nullable
     @Override
@@ -63,23 +67,27 @@ public class SectionFragment extends BaseFragment implements INewsListView, News
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ((MainActivity) getActivity()).getActivityComponent().inject(this);
-        presenter.setView(this);
+        mPresenter.setView(this);
         initUI();
-        presenter.loadNews(section, 1);
+        mPresenter.loadNews(mSection, 1);
     }
 
     private void initUI() {
-        section = getArguments().getString(SECTION);
-        newsAdapter = new NewsAdapter(imageLoader, this);
-        newsRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        newsRecycler.setAdapter(newsAdapter);
+        mSection = getArguments().getString(SECTION);
+        mNewsAdapter = new NewsAdapter(mImageLoader, this);
+        mNewsRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+        mNewsRecycler.setAdapter(mNewsAdapter);
+        mRefreshLayout.setOnRefreshListener(() -> mPresenter.loadNews(mSection, 1));
+        mRefreshLayout.setCustomHeadview(new ProgressBarView(getActivity()));
+        mPresenter.loadNews(mSection, 1);
         loading.setVisibility(VISIBLE);
     }
 
 
     @Override
     public void loadNews(List<SimpleNews> news) {
-        newsAdapter.update(news);
+        mNewsAdapter.update(news);
+        mRefreshLayout.refreshComplete();
         loading.setVisibility(GONE);
     }
 
@@ -92,7 +100,7 @@ public class SectionFragment extends BaseFragment implements INewsListView, News
     @Override
     public void onDestroy() {
         super.onDestroy();
-        presenter.unSubscribeAll();
+        mPresenter.unSubscribeAll();
     }
 
     @Override
@@ -101,12 +109,11 @@ public class SectionFragment extends BaseFragment implements INewsListView, News
         bundle.putParcelable(NEWS, news);
         NewsFragment fragment = new NewsFragment();
         fragment.setArguments(bundle);
-        navigationHelper.addFragment(fragment, TAG_NEWS_FRAGMENT);
+        mNavigationHelper.addFragment(fragment, TAG_NEWS_FRAGMENT);
     }
 
     @Override
     public void onSwipedEnd(int nextPage) {
-        loading.setVisibility(VISIBLE);
-        presenter.loadNews(section, nextPage);
+        mPresenter.loadNews(mSection, nextPage);
     }
 }

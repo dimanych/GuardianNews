@@ -71,4 +71,13 @@ public class SimpleNews implements Entity {
             return new SimpleNews[size];
         }
     };
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof SimpleNews) {
+            SimpleNews news = (SimpleNews) o;
+            return this.id.equals(news.id);
+        }
+        return super.equals(o);
+    }
 }

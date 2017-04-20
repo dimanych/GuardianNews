@@ -6,6 +6,8 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
+import javax.inject.Inject;
+
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
@@ -17,6 +19,7 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
 public class ImageLoader {
     private Context context;
 
+    @Inject
     public ImageLoader(Context context) {
 
         this.context = context;

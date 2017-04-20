@@ -57,7 +57,7 @@ public class ArticleView extends LinearLayout {
     }
 
     private void init() {
-        App.getInstance().getAppComponent().inject(this);
+        ((App) getContext().getApplicationContext()).getAppComponent().inject(this);
         setOrientation(VERTICAL);
     }
 

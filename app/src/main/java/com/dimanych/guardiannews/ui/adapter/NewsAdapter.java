@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.annimon.stream.Collectors;
+import com.annimon.stream.Stream;
 import com.dimanych.guardiannews.R;
 import com.dimanych.guardiannews.model.api.SimpleNews;
 import com.dimanych.guardiannews.util.CustomDateUtils;
@@ -105,7 +107,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
     }
 
     public void update(List<SimpleNews> results) {
-        this.newsList.addAll(results);
+        List<SimpleNews> simpleNewses = Stream.of(results)
+                .filterNot(item -> newsList.contains(item))
+                .collect(Collectors.toList());
+        this.newsList.addAll(simpleNewses);
         notifyDataSetChanged();
     }
 }

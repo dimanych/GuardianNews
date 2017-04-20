@@ -56,7 +56,7 @@ public class ImgView extends LinearLayout {
     }
 
     private void init() {
-        App.getInstance().getAppComponent().inject(this);
+        ((App) getContext().getApplicationContext()).getAppComponent().inject(this);
         LayoutInflater inflater =
                 (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.img_view, this, true);
