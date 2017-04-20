@@ -25,9 +25,8 @@ public abstract class Constants {
      */
     public static final String API_KEY = "api-key";
     public static final String SHOW_FIELDS = "show-fields";
-    public static final String FIELDS = "fields";
+    public static final String FIELDS = "thumbnail,starRating,shortUrl,headline,score";
     public static final String NEWS = "news";
-    public static final String THUMBNAIL = "thumbnail";
     public static final String ALL = "all";
     public static final String WEB_TITLE = "webTitle";
     public static final String API_URL = "apiUrl";

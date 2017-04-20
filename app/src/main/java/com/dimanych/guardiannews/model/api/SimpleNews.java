@@ -15,17 +15,12 @@ import java.util.Date;
  */
 public class SimpleNews implements Entity {
 
-    @SerializedName("id")
     public String id;
-    @SerializedName("webTitle")
     public String webTitle;
-    @SerializedName("webUrl")
     public String webUrl;
-    @SerializedName("webPublicationDate")
     public Date webPublicationDate;
     @SerializedName("fields")
     public Field field;
-    @SerializedName("apiUrl")
     public String apiUrl;
 
     public SimpleNews(String id, String webTitle, String webUrl, Date webPublicationDate, Field field, String apiUrl) {

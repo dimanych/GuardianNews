@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import rx.android.schedulers.AndroidSchedulers;
 
 import static com.dimanych.guardiannews.util.Constants.API_KEY_VALUE;
-import static com.dimanych.guardiannews.util.Constants.THUMBNAIL;
+import static com.dimanych.guardiannews.util.Constants.FIELDS;
 
 /**
  * <p></p>
@@ -25,7 +25,7 @@ public class NewsListPresenter extends BasePresenter<SectionFragment> {
     }
 
     public void loadNews(String section, int pageNumber) {
-        subscribe(newsApi.getNewsList(section, API_KEY_VALUE, THUMBNAIL, pageNumber)
+        subscribe(newsApi.getNewsList(section, API_KEY_VALUE, FIELDS, pageNumber)
                 .map(response -> response.response)
                 .map(page -> page.results)
                 .observeOn(AndroidSchedulers.mainThread())

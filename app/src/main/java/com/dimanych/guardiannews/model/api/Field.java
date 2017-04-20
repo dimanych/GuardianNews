@@ -2,8 +2,6 @@ package com.dimanych.guardiannews.model.api;
 
 import android.support.annotation.Nullable;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
 
 /**
@@ -14,28 +12,25 @@ import java.io.Serializable;
 public class Field implements Serializable {
 
     @Nullable
-    @SerializedName("thumbnail")
     public String thumbnail;
 
     @Nullable
-    @SerializedName("body")
     public String body;
 
     @Nullable
-    @SerializedName("bodyText")
     public String bodyText;
 
     @Nullable
-    @SerializedName("byline")
     public String byline;
 
     @Nullable
-    @SerializedName("charCount")
-    public String charCount;
+    public String trailText;
 
     @Nullable
-    @SerializedName("trailText")
-    public String trailText;
+    public String headline;
+
+    @Nullable
+    public String score;
 
 
 }

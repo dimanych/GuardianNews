@@ -13,22 +13,16 @@ import java.util.Date;
  */
 public class Content {
 
-    @SerializedName("id")
     public String id;
 
-    @SerializedName("sectionId")
     public String sectionId;
 
-    @SerializedName("sectionName")
     public String sectionName;
 
-    @SerializedName("webPublicationDate")
     public Date webPublicationDate;
 
-    @SerializedName("webTitle")
     public String webTitle;
 
-    @SerializedName("webUrl")
     public String webUrl;
 
     @Nullable
