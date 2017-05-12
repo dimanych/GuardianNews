@@ -1,6 +1,6 @@
 package com.dimanych.guardiannews.ui.singlenews;
 
-import com.dimanych.guardiannews.base.IBaseView;
+import com.dimanych.guardiannews.base.mvp.IBaseView;
 import com.dimanych.guardiannews.model.api.Content;
 
 /**

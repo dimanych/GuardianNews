@@ -1,4 +1,4 @@
-package com.dimanych.guardiannews.ui;
+package com.dimanych.guardiannews.base;
 
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;

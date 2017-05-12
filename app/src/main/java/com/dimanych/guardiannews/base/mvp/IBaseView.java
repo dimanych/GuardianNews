@@ -1,4 +1,4 @@
-package com.dimanych.guardiannews.base;
+package com.dimanych.guardiannews.base.mvp;
 
 /**
  * <p></p>

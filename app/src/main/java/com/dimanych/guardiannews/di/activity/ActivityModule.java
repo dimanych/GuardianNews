@@ -1,6 +1,6 @@
 package com.dimanych.guardiannews.di.activity;
 
-import com.dimanych.guardiannews.ui.BaseActivity;
+import com.dimanych.guardiannews.base.BaseActivity;
 import com.dimanych.guardiannews.util.helper.NavigationHelper;
 
 import dagger.Module;

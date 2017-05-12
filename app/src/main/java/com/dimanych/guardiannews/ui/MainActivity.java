@@ -3,6 +3,7 @@ package com.dimanych.guardiannews.ui;
 import android.os.Bundle;
 
 import com.dimanych.guardiannews.App;
+import com.dimanych.guardiannews.base.BaseActivity;
 import com.dimanych.guardiannews.R;
 import com.dimanych.guardiannews.di.activity.ActivityModule;
 import com.dimanych.guardiannews.ui.newslist.NewsListFragment;

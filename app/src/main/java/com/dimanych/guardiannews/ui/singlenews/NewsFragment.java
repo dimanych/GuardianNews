@@ -15,7 +15,7 @@ import com.annimon.stream.Optional;
 import com.dimanych.guardiannews.R;
 import com.dimanych.guardiannews.model.api.Content;
 import com.dimanych.guardiannews.model.api.SimpleNews;
-import com.dimanych.guardiannews.ui.BaseFragment;
+import com.dimanych.guardiannews.base.BaseFragment;
 import com.dimanych.guardiannews.ui.MainActivity;
 import com.dimanych.guardiannews.ui.view.ArticleView;
 import com.dimanych.guardiannews.ui.view.CustomToolbar;

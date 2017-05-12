@@ -1,4 +1,4 @@
-package com.dimanych.guardiannews.base;
+package com.dimanych.guardiannews.base.mvp;
 
 import java.lang.ref.WeakReference;
 

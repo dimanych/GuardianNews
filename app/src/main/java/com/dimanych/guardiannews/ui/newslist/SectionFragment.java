@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.dimanych.guardiannews.R;
 import com.dimanych.guardiannews.model.api.SimpleNews;
-import com.dimanych.guardiannews.ui.BaseFragment;
+import com.dimanych.guardiannews.base.BaseFragment;
 import com.dimanych.guardiannews.ui.MainActivity;
 import com.dimanych.guardiannews.ui.adapter.NewsAdapter;
 import com.dimanych.guardiannews.ui.singlenews.NewsFragment;

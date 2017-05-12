@@ -1,6 +1,6 @@
 package com.dimanych.guardiannews.ui.singlenews;
 
-import com.dimanych.guardiannews.base.BasePresenter;
+import com.dimanych.guardiannews.base.mvp.BasePresenter;
 import com.dimanych.guardiannews.rest.NewsApi;
 
 import javax.inject.Inject;

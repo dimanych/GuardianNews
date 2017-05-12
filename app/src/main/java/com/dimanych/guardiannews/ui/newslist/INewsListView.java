@@ -1,6 +1,6 @@
 package com.dimanych.guardiannews.ui.newslist;
 
-import com.dimanych.guardiannews.base.IBaseView;
+import com.dimanych.guardiannews.base.mvp.IBaseView;
 import com.dimanych.guardiannews.model.api.SimpleNews;
 
 import java.util.List;

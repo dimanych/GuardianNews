@@ -1,4 +1,4 @@
-package com.dimanych.guardiannews.ui;
+package com.dimanych.guardiannews.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

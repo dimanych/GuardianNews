@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dimanych.guardiannews.R;
-import com.dimanych.guardiannews.ui.BaseFragment;
+import com.dimanych.guardiannews.base.BaseFragment;
 import com.dimanych.guardiannews.ui.MainActivity;
 import com.dimanych.guardiannews.ui.adapter.CustomPageAdapter;
 import com.dimanych.guardiannews.util.helper.NavigationHelper;

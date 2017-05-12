@@ -1,8 +1,8 @@
 package com.dimanych.guardiannews.util.helper;
 
 import com.dimanych.guardiannews.R;
-import com.dimanych.guardiannews.ui.BaseActivity;
-import com.dimanych.guardiannews.ui.BaseFragment;
+import com.dimanych.guardiannews.base.BaseActivity;
+import com.dimanych.guardiannews.base.BaseFragment;
 
 /**
  * <p></p>
