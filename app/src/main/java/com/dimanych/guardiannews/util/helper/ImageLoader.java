@@ -32,7 +32,6 @@ public class ImageLoader {
     public void loadImageCenterCrop(Uri uri, ImageView imageView) {
         Glide.with(context)
                 .load(uri)
-                .centerCrop()
                 .into(imageView);
     }
 
@@ -43,28 +42,6 @@ public class ImageLoader {
     public void loadImage(Uri uri, ImageView imageView) {
         Glide.with(context)
                 .load(uri)
-                .into(imageView);
-    }
-
-    public void loadImageRounded(String url, ImageView imageView) {
-        loadImageRounded(Uri.parse(url), imageView);
-    }
-
-    public void loadImageRounded(Uri uri, ImageView imageView) {
-        Glide.with(context)
-                .load(uri)
-                .bitmapTransform(new CropCircleTransformation(context))
-                .into(imageView);
-    }
-
-    public void loadImageBlurred(String url, ImageView imageView) {
-        loadImageBlurred(Uri.parse(url), imageView);
-    }
-
-    public void loadImageBlurred(Uri uri, ImageView imageView) {
-        Glide.with(context)
-                .load(uri)
-                .bitmapTransform(new BlurTransformation(context))
                 .into(imageView);
     }
 }
