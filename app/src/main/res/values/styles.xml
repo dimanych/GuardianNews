@@ -8,11 +8,10 @@
         <item name="colorAccent">@color/brightTurquoise</item>
         <item name="android:textSize">@dimen/text_normal</item>
         <item name="android:textAppearance">@style/RobotoFont</item>
-
     </style>
 
     <style name="ImageAltTheme">
-        <item name="android:textSize">12dp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/nobel</item>
     </style>
 

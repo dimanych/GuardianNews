@@ -3,6 +3,7 @@
 
   <color name="black">#000000</color>
   <color name="revolver">#39393A</color>
+  <color name="textColor">#808080</color>
   <color name="white">#FDFDFD</color>
   <color name="lightGrey">#D6D6D6</color>
   <color name="nobel">#A1A1A1</color>

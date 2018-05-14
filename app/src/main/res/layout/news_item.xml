@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/news_item"
     android:layout_marginTop="@dimen/margin_medium"
     android:layout_marginLeft="@dimen/margin_medium"
     android:layout_marginRight="@dimen/margin_medium"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +17,9 @@
         <ImageView
             android:id="@+id/thumbnail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            tools:src="@drawable/ic_camera_alt_black_18dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,8 +32,9 @@
                 android:id="@+id/web_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/text_h2"
                 android:textColor="@color/revolver"
-                android:textSize="@dimen/text_h2"/>
+                tools:text="News Title"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -50,6 +54,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_h3"
+                    android:textColor="@color/nobel"
+                    tools:text="21.12 12 May 2001"
                     />
             </LinearLayout>
         </LinearLayout>

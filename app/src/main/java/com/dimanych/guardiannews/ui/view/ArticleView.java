@@ -3,6 +3,7 @@ package com.dimanych.guardiannews.ui.view;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.RelativeSizeSpan;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.annimon.stream.Stream;
 import com.dimanych.guardiannews.App;
+import com.dimanych.guardiannews.R;
 import com.dimanych.guardiannews.model.api.Field;
 import com.dimanych.guardiannews.util.StringUtils;
 import com.dimanych.guardiannews.util.helper.ImageLoader;
@@ -65,8 +67,8 @@ public class ArticleView extends LinearLayout {
         try {
             Document document = Jsoup.parse(field.body);
             Elements elements = document.select("body *");
-            makeCapital(createTextView(getFirstLine(elements)), elements.first().text());
-            elements.remove(0);
+//            makeCapital(createTextView(getFirstLine(elements)), elements.first().text());
+//            elements.remove(0);
             for (Element element : elements) {
                 switch (element.tag().getName()) {
                     case "p":
@@ -82,6 +84,7 @@ public class ArticleView extends LinearLayout {
                         HtmlTextView headTextView = new HtmlTextView(getContext());
                         headTextView.setHtml(element.toString(), new HtmlHttpImageGetter(headTextView));
                         headTextView.setPadding(0,30,0,30);
+                        headTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.textColor));
                         addView(headTextView);
                         break;
                     case "img":
@@ -113,7 +116,11 @@ public class ArticleView extends LinearLayout {
     private TextView createTextView(Element element) {
         HtmlTextView textView = new HtmlTextView(getContext());
         try {
-            textView.setHtml(element.toString(), new HtmlHttpImageGetter(textView));
+            String text = element.toString();
+            text = text.replace("<strong>", "<b>");
+            text = text.replace("</strong>", "</b>");
+            textView.setTextColor(ContextCompat.getColor(getContext(), R.color.textColor));
+            textView.setHtml(text, new HtmlHttpImageGetter(textView));
         } catch (IndexOutOfBoundsException e) {
             textView.setText(element.text());
         }
