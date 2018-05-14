@@ -75,7 +75,11 @@ public class ArticleView extends LinearLayout {
                     case "em":
                     case "br":
                     case "blockquote":
-                        createTextView(element);
+                        TextView textView = createTextView(element);
+                        if ("p".equals(element.tag().getName())) {
+                            textView.setPadding(0,0,0,20);
+                        }
+                        addView(textView);
                         break;
                     case "h1":
                     case "h2":
@@ -124,7 +128,6 @@ public class ArticleView extends LinearLayout {
         } catch (IndexOutOfBoundsException e) {
             textView.setText(element.text());
         }
-        addView(textView);
         return textView;
     }
 
